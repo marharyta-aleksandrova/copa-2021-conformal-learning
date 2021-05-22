@@ -1,0 +1,154 @@
+\section{Experimental results}
+\label{sec:experiments}
+
+\subsection{Balance dataset}
+
+
+\begin{table}[htbp]
+\scriptsize
+ % The first argument is the label.
+ % The caption goes in the second argument, and the table contents
+ % go in the third argument.
+\floatconts
+  {tab:balance-results}%
+  {\caption{balance dataset}}%
+  {
+\begin{tabular}{l|lll|lll|lll|lll|lll}
+             & \multicolumn{3}{c|}{$\epsilon=0.01$} & \multicolumn{3}{c|}{$\epsilon=0.05$} & \multicolumn{3}{c|}{$\epsilon=0.1$} & \multicolumn{3}{c|}{$\epsilon=0.15$} & \multicolumn{3}{c}{$\epsilon=0.2$} \\
+\hline
+\hline
+ip           &            & $-$        & $-$*       &            & $-$        & $-$*       &            & $-$        & $-$        &            & $+$        & $-$        &            & $-$        & $-$         \\
+ip\_m        & $+$        &            & $-$*       & $+$        &            & $-$*       & $+$        &            & $-$        & $-$        &            & $-$        & $+$        &            & $-$         \\
+m            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &             \\
+\hline
+\textbf{SVM} & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+\hline
+ip           &            & $-$        & $+$        &            & $-$        & $-$        &            & $-$        & $+$        &            & $-$        & $+$        &            & $+$        & $+$         \\
+ip\_m        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $-$        &            & $+$         \\
+m            & $-$        & $-$        &            & $+$        & $-$        &            & $-$        & $-$        &            & $-$        & $-$        &            & $-$        & $-$        &             \\
+\hline
+\hline
+ip           &            &            & $-$        &            & $-$        & $-$*       &            & $-$        & $-$*       &            & $-$        & $-$*       &            & $-$        & $-$*        \\
+ip\_m        &            &            & $-$        & $+$        &            & $-$*       & $+$        &            & $-$*       & $+$        &            & $-$*       & $+$        &            & $-$*        \\
+m            & $+$        & $+$        &            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$*       & $+$*       &             \\
+\hline
+\textbf{DT}  & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+\hline
+ip           &            &            & $-$        &            & $-$        & $-$*       &            & $-$        & $-$*       &            & $-$        & $-$        &            & $-$        & $-$         \\
+ip\_m        &            &            & $-$        & $+$        &            & $-$*       & $+$        &            & $-$*       & $+$        &            & $-$        & $+$        &            & $-$         \\
+m            & $+$        & $+$        &            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$        & $+$        &            & $+$        & $+$        &             \\
+\hline
+\hline
+ip           &            &            & $-$*       &            & $-$*       & $-$*       &            & $-$        & $-$*       &            &            & $-$*       &            & $-$        & $-$*        \\
+ip\_m        &            &            & $-$*       & $+$*       &            & $-$*       & $+$        &            & $-$*       &            &            & $-$*       & $+$        &            & $-$*        \\
+m            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$*       & $+$*       &             \\
+\hline
+\textbf{KNN} & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+\hline
+ip           &            &            & $-$*       &            & $-$*       & $-$*       &            & $-$        & $-$*       &            &            & $-$*       &            & $-$        & $-$*        \\
+ip\_m        &            &            & $-$*       & $+$*       &            & $-$*       & $+$        &            & $-$*       &            &            & $-$*       & $+$        &            & $-$*        \\
+m            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$*       & $+$*       &             \\
+\hline
+\hline
+ip           &            &            & $-$*       &            & $-$*       & $-$*       &            & $-$*       & $-$*       &            & $-$*       & $-$*       &            & $-$*       & $-$*        \\
+ip\_m        &            &            & $-$*       & $+$*       &            & $-$*       & $+$*       &            & $-$*       & $+$*       &            & $-$*       & $+$*       &            & $-$         \\
+m            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$*       & $+$        &             \\
+\hline
+\textbf{Ada} & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+\hline
+ip           &            &            & $-$*       &            & $-$*       & $-$*       &            & $-$*       & $-$*       &            & $-$*       & $-$*       &            & $-$*       & $-$*        \\
+ip\_m        &            &            & $-$*       & $+$*       &            & $-$        & $+$*       &            & $+$        & $+$*       &            & $+$        & $+$*       &            & $+$         \\
+m            & $+$*       & $+$*       &            & $+$*       & $+$        &            & $+$*       & $-$        &            & $+$*       & $-$        &            & $+$*       & $-$        &             \\
+\hline
+\hline
+ip           &            &            & $-$*       &            & $-$*       & $-$*       &            & $-$        & $-$        &            &            & $-$        &            &            & $-$         \\
+ip\_m        &            &            & $-$*       & $+$*       &            & $-$*       & $+$        &            & $-$        &            &            & $-$        &            &            & $-$         \\
+m            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &             \\
+\hline
+\textbf{GNB} & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+\hline
+ip           &            &            & $-$*       &            & $-$*       & $-$*       &            & $-$        & $-$        &            &            & $+$        &            &            & $+$         \\
+ip\_m        &            &            & $-$*       & $+$*       &            & $-$*       & $+$        &            & $-$        &            &            & $+$        &            &            & $+$         \\
+m            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$        & $+$        &            & $-$        & $-$        &            & $-$        & $-$        &             \\
+\hline
+\hline
+ip           &            & $-$        & $-$*       &            & $-$        & $-$        &            & $-$        & $-$        &            & $+$        & $-$        &            & $-$        & $+$         \\
+ip\_m        & $+$        &            & $-$*       & $+$        &            & $-$        & $+$        &            & $-$        & $-$        &            & $-$        & $+$        &            & $+$         \\
+m            & $+$*       & $+$*       &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &            & $-$        & $-$        &             \\
+\hline
+\textbf{MPR} & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+\hline
+ip           &            & $-$        & $-$*       &            & $-$        & $-$        &            & $-$        & $-$        &            & $-$        & $+$        &            & $+$        & $-$         \\
+ip\_m        & $+$        &            & $-$*       & $+$        &            & $-$        & $+$        &            & $-$        & $+$        &            & $+$        & $-$        &            & $-$         \\
+m            & $+$*       & $+$*       &            & $+$        & $+$        &            & $+$        & $+$        &            & $-$        & $-$        &            & $+$        & $+$        &             \\
+\hline
+\hline
+ip           &            & $+$        & $-$*       &            & $-$*       & $-$*       &            & $-$        & $-$        &            & $-$        & $-$        &            & $+$        & $-$         \\
+ip\_m        & $-$        &            & $-$*       & $+$*       &            & $-$*       & $+$        &            & $+$        & $+$        &            & $-$        & $-$        &            & $-$         \\
+m            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$        & $-$        &            & $+$        & $+$        &            & $+$        & $+$        &             \\
+\hline
+\textbf{RF}  & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+\hline
+ip           &            & $+$        & $-$*       &            & $-$*       & $-$*       &            & $-$        & $-$        &            & $-$        & $-$        &            & $-$        & $-$         \\
+ip\_m        & $-$        &            & $-$*       & $+$*       &            & $-$*       & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &            & $-$         \\
+m            & $+$*       & $+$*       &            & $+$*       & $+$*       &            & $+$        & $-$        &            & $+$        & $-$        &            & $+$        & $+$        &             \\
+\hline
+\hline
+ip           &            &            & $-$*       &            & $-$        & $-$        &            & $-$        & $+$        &            &            & $+$        &            &            & $-$         \\
+ip\_m        &            &            & $-$*       & $+$        &            & $+$        & $+$        &            & $+$        &            &            & $+$        &            &            & $-$         \\
+m            & $+$*       & $+$*       &            & $+$        & $-$        &            & $-$        & $-$        &            & $-$        & $-$        &            & $+$        & $+$        &             \\
+\hline
+\textbf{QDA} & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+\hline
+ip           &            &            & $-$*       &            & $-$        & $+$*       &            & $-$        & $+$        &            &            & $-$        &            &            & $+$         \\
+ip\_m        &            &            & $-$*       & $+$        &            & $+$*       & $+$        &            & $+$        &            &            & $-$        &            &            & $+$         \\
+m            & $+$*       & $+$*       &            & $-$*       & $-$*       &            & $-$        & $-$        &            & $+$        & $+$        &            & $-$        & $-$        &             \\
+\hline
+\hline
+\end{tabular}
+
+  }
+\end{table}
+
+
+
+\begin{table}[htbp]
+\scriptsize
+ % The first argument is the label.
+ % The caption goes in the second argument, and the table contents
+ % go in the third argument.
+\floatconts
+  {tab:balance-results}%
+  {\caption{Example table}}%
+  {
+\begin{tabular}{l|lll|lll|lll|lll|lll}
+             & \multicolumn{3}{c|}{$\epsilon=0.01$} & \multicolumn{3}{c|}{$\epsilon=0.05$} & \multicolumn{3}{c|}{$\epsilon=0.1$} & \multicolumn{3}{c}{$\epsilon=0.15$} & \multicolumn{3}{c|}{$\epsilon=0.2$} \\
+\hline
+\textbf{SVM} & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+
+\hline
+\textbf{DT}  & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+
+\hline
+\textbf{KNN} & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+
+\hline
+\textbf{Ada} & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+
+\hline
+\textbf{GNB} & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+
+\hline
+\textbf{MPR} & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+
+\hline
+\textbf{RF}  & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+
+\hline
+\textbf{QDA} & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
+
+\hline
+\end{tabular}
+
+  }
+\end{table}
