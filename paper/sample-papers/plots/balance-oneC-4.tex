@@ -5,17 +5,24 @@
 
 \begin{axis}[
 legend cell align={left},
-legend style={fill opacity=0.8, draw opacity=1, text opacity=1, draw=white!80!black},
+legend style={fill opacity=0.8, draw opacity=1, text opacity=1, draw=white!80!black,
+at={(0.6,0.05)},
+  anchor=south west,},
 tick align=outside,
 tick pos=left,
 x grid style={white!69.0196078431373!black},
 xmajorgrids,
 xmin=0.000499999999999999, xmax=0.2095,
 xtick style={color=black},
+xtick={.01,.03,.05,.1,.15,.2},
+%xticklabels = {.01,.03,.05,.1,.15,.2},
+xticklabels = {,,,,,},
 y grid style={white!69.0196078431373!black},
 ymajorgrids,
 ymin=-0.045, ymax=1.05458064516129,
-ytick style={color=black}
+ytick style={color=black},
+height=4.3cm,
+width=7cm,
 ]
 \addplot [very thick, color0, dashed, forget plot]
 table {%
