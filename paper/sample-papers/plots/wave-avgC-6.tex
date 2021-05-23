@@ -1,0 +1,76 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\begin{axis}[
+legend cell align={left},
+legend style={fill opacity=0.8, draw opacity=1, text opacity=1, draw=white!80!black},
+tick align=outside,
+tick pos=left,
+x grid style={white!69.0196078431373!black},
+xmajorgrids,
+xmin=0.000499999999999999, xmax=0.2095,
+xtick style={color=black},
+y grid style={white!69.0196078431373!black},
+ymajorgrids,
+ymin=-0.045, ymax=3.27965,
+ytick style={color=black}
+]
+\addplot [very thick, blue, dashed, forget plot]
+table {%
+0.01 1.83984
+0.03 1.49618
+0.05 1.36898
+0.1 1.18084
+0.15 1.0559
+0.2 0.95354
+};
+\addplot [very thick, blue, dash pattern=on 1pt off 3pt on 3pt off 3pt, forget plot]
+table {%
+0.01 1.64446
+0.03 1.4488
+0.05 1.3471
+0.1 1.18328
+0.15 1.06668
+0.2 0.96522
+};
+\addplot [blue]
+table {%
+0.01 1.5923
+0.03 1.40158
+0.05 1.3005
+0.1 1.1362
+0.15 1.03554
+0.2 0.9577
+};
+\addlegendentry{RF}
+\addplot [very thick, white!50.1960784313725!black, dashed, forget plot]
+table {%
+0.01 1.80502
+0.03 1.4604
+0.05 1.2561
+0.1 1.10236
+0.15 0.992
+0.2 0.8954
+};
+\addplot [very thick, white!50.1960784313725!black, dash pattern=on 1pt off 3pt on 3pt off 3pt, forget plot]
+table {%
+0.01 1.44276
+0.03 1.31736
+0.05 1.24286
+0.1 1.10238
+0.15 0.99202
+0.2 0.8954
+};
+\addplot [white!50.1960784313725!black]
+table {%
+0.01 1.44276
+0.03 1.31736
+0.05 1.24286
+0.1 1.10238
+0.15 0.99202
+0.2 0.8954
+};
+\addlegendentry{QDA}
+\end{axis}
+
+\end{tikzpicture}

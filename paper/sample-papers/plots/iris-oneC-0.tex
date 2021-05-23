@@ -1,0 +1,86 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{1,0,1}
+\definecolor{color1}{rgb}{1,0.647058823529412,0}
+
+\begin{axis}[
+legend cell align={left},
+legend style={
+  fill opacity=0.8,
+  draw opacity=1,
+  text opacity=1,
+  at={(0.03,0.97)},
+  anchor=north west,
+  draw=white!80!black
+},
+tick align=outside,
+tick pos=left,
+x grid style={white!69.0196078431373!black},
+xmajorgrids,
+xmin=0.000499999999999999, xmax=0.2095,
+xtick style={color=black},
+y grid style={white!69.0196078431373!black},
+ymajorgrids,
+ymin=-0.045, ymax=1.067,
+ytick style={color=black}
+]
+\addplot [very thick, color0, dashed, forget plot]
+table {%
+0.01 0
+0.03 0
+0.05 0.949333333333334
+0.1 0.928666666666667
+0.15 0.872666666666667
+0.2 0.834666666666667
+};
+\addplot [very thick, color0, dash pattern=on 1pt off 3pt on 3pt off 3pt, forget plot]
+table {%
+0.01 0
+0.03 0
+0.05 0.950666666666667
+0.1 0.926666666666667
+0.15 0.874
+0.2 0.834666666666667
+};
+\addplot [color0]
+table {%
+0.01 0
+0.03 0
+0.05 0.949333333333333
+0.1 0.932
+0.15 0.87
+0.2 0.831333333333333
+};
+\addlegendentry{SVM}
+\addplot [very thick, color1, dashed, forget plot]
+table {%
+0.01 0
+0.03 0
+0.05 0.281333333333333
+0.1 0.698666666666667
+0.15 0.97
+0.2 0.968666666666667
+};
+\addplot [very thick, color1, dash pattern=on 1pt off 3pt on 3pt off 3pt, forget plot]
+table {%
+0.01 0
+0.03 0
+0.05 0.281333333333333
+0.1 0.698666666666667
+0.15 0.97
+0.2 0.968666666666667
+};
+\addplot [color1]
+table {%
+0.01 0
+0.03 0
+0.05 0.290666666666667
+0.1 0.698666666666667
+0.15 0.97
+0.2 0.968666666666667
+};
+\addlegendentry{DT}
+\end{axis}
+
+\end{tikzpicture}

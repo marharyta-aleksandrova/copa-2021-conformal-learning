@@ -1,0 +1,85 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{1,0.388235294117647,0.27843137254902}
+
+\begin{axis}[
+legend cell align={left},
+legend style={
+  fill opacity=0.8,
+  draw opacity=1,
+  text opacity=1,
+  at={(0.03,0.97)},
+  anchor=north west,
+  draw=white!80!black
+},
+tick align=outside,
+tick pos=left,
+x grid style={white!69.0196078431373!black},
+xmajorgrids,
+xmin=0.000499999999999999, xmax=0.2095,
+xtick style={color=black},
+y grid style={white!69.0196078431373!black},
+ymajorgrids,
+ymin=-0.045, ymax=1.06886215055944,
+ytick style={color=black}
+]
+\addplot [very thick, color0, dashed, forget plot]
+table {%
+0.01 0.0370946151505932
+0.03 0.0674806476692695
+0.05 0.0863543251191563
+0.1 0.196535172227293
+0.15 0.380300848460264
+0.2 0.521987628029612
+};
+\addplot [very thick, color0, dash pattern=on 1pt off 3pt on 3pt off 3pt, forget plot]
+table {%
+0.01 0.0263310009126863
+0.03 0.0619818814859886
+0.05 0.0792330054423148
+0.1 0.145842544704729
+0.15 0.343218402460873
+0.2 0.483736267450901
+};
+\addplot [color0]
+table {%
+0.01 0.0289341851739174
+0.03 0.0619818814859886
+0.05 0.0792330054423148
+0.1 0.145842544704729
+0.15 0.343218402460873
+0.2 0.483736267450901
+};
+\addlegendentry{GNB}
+\addplot [very thick, black, dashed, forget plot]
+table {%
+0.01 0.715605584288274
+0.03 0.789644390359328
+0.05 0.856190717641889
+0.1 0.971692864144948
+0.15 0.92117499915492
+0.2 0.840029070750093
+};
+\addplot [very thick, black, dash pattern=on 1pt off 3pt on 3pt off 3pt, forget plot]
+table {%
+0.01 0.65675320285299
+0.03 0.754035087719298
+0.05 0.830442483858973
+0.1 0.94941554271034
+0.15 0.916595679951323
+0.2 0.831069533177838
+};
+\addplot [black]
+table {%
+0.01 0.690092620761924
+0.03 0.774419768110063
+0.05 0.841949430416117
+0.1 0.951442044417402
+0.15 0.914976506777541
+0.2 0.832165770881926
+};
+\addlegendentry{MPR}
+\end{axis}
+
+\end{tikzpicture}

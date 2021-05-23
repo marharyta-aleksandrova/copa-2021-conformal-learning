@@ -1,0 +1,78 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.647058823529412,0.164705882352941,0.164705882352941}
+
+\begin{axis}[
+legend cell align={left},
+legend style={fill opacity=0.8, draw opacity=1, text opacity=1, draw=white!80!black},
+tick align=outside,
+tick pos=left,
+x grid style={white!69.0196078431373!black},
+xmajorgrids,
+xmin=0.000499999999999999, xmax=0.2095,
+xtick style={color=black},
+y grid style={white!69.0196078431373!black},
+ymajorgrids,
+ymin=-0.045, ymax=6.336,
+ytick style={color=black}
+]
+\addplot [very thick, color0, dashed, forget plot]
+table {%
+0.01 5.76
+0.03 4.90809523809524
+0.05 3.87
+0.1 2.85809523809524
+0.15 2.18857142857143
+0.2 1.6347619047619
+};
+\addplot [very thick, color0, dash pattern=on 1pt off 3pt on 3pt off 3pt, forget plot]
+table {%
+0.01 5.76
+0.03 5.42333333333333
+0.05 4.58857142857143
+0.1 3.51095238095238
+0.15 2.78809523809524
+0.2 1.7852380952381
+};
+\addplot [color0]
+table {%
+0.01 5.76
+0.03 5.42333333333333
+0.05 4.32857142857143
+0.1 3.32619047619048
+0.15 2.60285714285714
+0.2 1.74761904761905
+};
+\addlegendentry{KNN}
+\addplot [very thick, green!50.1960784313725!black, dashed, forget plot]
+table {%
+0.01 5.76
+0.03 4.90047619047619
+0.05 4.13
+0.1 3.33809523809524
+0.15 3.06619047619048
+0.2 2.8
+};
+\addplot [very thick, green!50.1960784313725!black, dash pattern=on 1pt off 3pt on 3pt off 3pt, forget plot]
+table {%
+0.01 5.76
+0.03 4.44285714285714
+0.05 3.55619047619048
+0.1 2.9647619047619
+0.15 2.65761904761905
+0.2 2.35285714285714
+};
+\addplot [green!50.1960784313725!black]
+table {%
+0.01 5.76
+0.03 4.43333333333333
+0.05 3.55
+0.1 2.95666666666667
+0.15 2.65285714285714
+0.2 2.31285714285714
+};
+\addlegendentry{Ada}
+\end{axis}
+
+\end{tikzpicture}
