@@ -45,8 +45,10 @@
 \jmlrworkshop{workshop title} % W&CP title
 
  % The optional argument of \title is used in the header
-\title[Short Title]{Full Title of Article\titlebreak This Title Has
-A Line Break}
+\title[Impact of Nonconformity Functions on Efficiency of Conformal Classifiers]{
+Impact of Model-Agnostic Nonconformity Functions on Efficiency of Conformal Classifiers: an Extensive Study
+%Full Title of Article\titlebreak This Title Has A Line Break
+}
 
  % Anything in the title that should appear in the main title but 
  % not in the article's header or the volume's table of
@@ -71,9 +73,11 @@ A Line Break}
  % table of contents should be placed inside \nametag{}
 
  % Two authors with the same address
-  \author{\Name{Author Name1\nametag{\thanks{A note}}} \Email{abc@sample.com}\and
-   \Name{Author Name2} \Email{xyz@sample.com}\\
-   \addr Address}
+%  \author{
+%  \Name{Author Name1\nametag{\thanks{A note}}} \Email{abc@sample.com}\and
+%  \Name{Author Name2} \Email{xyz@sample.com}\\
+%  \addr Address}
+
 
  % Three or more authors with the same address:
  % \author{\Name{Author Name1} \Email{an1@sample.com}\\
@@ -94,12 +98,13 @@ A Line Break}
 
 
  % Authors with different addresses:
- % \author{\Name{Author Name1} \Email{abc@sample.com}\\
- % \addr Address 1
- % \AND
- % \Name{Author Name2} \Email{xyz@sample.com}\\
- % \addr Address 2
- %}
+  \author{\Name{Marharyta Aleksandrova} \Email{marharyta.aleksandrova@\{uni.lu,gmail.com\}}\\
+  \addr University of Luxembourg, 2 avenue de l'Université, L-4365 Esch-sur-Alzette, Luxembourg
+  \AND
+  \Name{Oleg Chertov} \Email{chertov@i.ua}\\
+  \addr National Technical University of Ukraine "Igor Sikorsky Kyiv Polytechnic Institute", \\
+  Department of Applied Mathematics, 14-A Politekhnichna St, 03056 Kyiv, Ukraine
+ }
 
 \editor{Editor's name}
  %\editors{Editor One and Editor Two}% for multiple editors
@@ -109,10 +114,12 @@ A Line Break}
 \maketitle
 
 \begin{abstract}
-This is the abstract for this article.
+The property of Conformal prediction to guarantee the required accuracy rate makes this framework attractive in various practical applications. However, this property is achieved at a price of reduction in precision. In the case of conformal classification, for example, the systems can output multiple class labels instead of one. It is also known from the literature that the choice of nonconformity function has a major impact on the efficiency of conformal classifiers. Recently it was shown that different model-agnostic nonconformity functions result in conformal classifiers with different characteristics. In the case of Neural Network being used as a baseline classifier, the non-conformity function based on hinge loss allows minimizing the average number of predicted labels, while the non-conformity function based on margin results in a larger fraction of singleton predictions. In this work, we aim to further extend this study. We perform our evaluation using 8 different classification algorithms and discuss when the observed relationship holds or not. Additionally, we analyze the characteristics of hinge loss and margin and give suggestions on how to combine the properties of these two non-conformity functions.
 \end{abstract}
 \begin{keywords}
-List of keywords
+Conformal classification,
+Nonconformity functions,
+Efficiency
 \end{keywords}
 
 %\input{sections/old-text}
