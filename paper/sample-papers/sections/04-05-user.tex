@@ -56,33 +56,33 @@
  % The caption goes in the second argument, and the table contents
  % go in the third argument.
 \floatconts
-  {tab:balance-results}%
+  {tab:user-results}%
   {\caption{user dataset}}%
   {
 \begin{tabular}{cl|lll|lll|lll|lll|lll}
-             & & \multicolumn{3}{c|}{$\epsilon=0.01$} & \multicolumn{3}{c|}{$\epsilon=0.05$} & \multicolumn{3}{c|}{$\epsilon=0.1$} & \multicolumn{3}{c|}{$\epsilon=0.15$} & \multicolumn{3}{c}{$\epsilon=0.2$} \\
+             && \multicolumn{3}{c|}{$\epsilon=0.01$} & \multicolumn{3}{c|}{$\epsilon=0.05$} & \multicolumn{3}{c|}{$\epsilon=0.1$} & \multicolumn{3}{c|}{$\epsilon=0.15$} & \multicolumn{3}{c}{$\epsilon=0.2$} \\
 \hline
 \hline
-\multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            & $+$        &            & $-$        & $+$        &            & $-$        &            &            & $+$        & $+$         \\
-&ip\_m        &            &            &            &            &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $-$        &            & $+$         \\
-&m            &            &            &            & $-$        & $-$        &            & $-$        & $-$        &            &            & $-$        &            & $-$        & $-$        &             \\
+\multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            & $+$        &            &            & $+$        &            &            & $-$        &            &            & $+$         \\
+&ip\_m        &            &            &            &            &            & $+$        &            &            & $+$        &            &            & $-$        &            &            & $+$         \\
+&m            &            &            &            & $-$        & $-$        &            & $-$        & $-$        &            & $+$        & $+$        &            & $-$        & $-$        &             \\
 \hline
 \multicolumn{2}{l|}{\textbf{SVM}} & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
 \hline
-\multirow{3}{*}{\rotatebox[origin=c]{90}{$avgC$}}&ip           &            &            &            &            & $+$        & $+$*       &            & $+$        & $-$        &            & $+$        &            &            & $-$        & $-$         \\
-&ip\_m        &            &            &            & $-$        &            & $+$*       & $-$        &            & $-$        & $-$        &            & $-$        & $+$        &            & $-$         \\
-&m            &            &            &            & $-$*       & $-$*       &            & $+$        & $+$        &            &            & $+$        &            & $+$        & $+$        &             \\
+\multirow{3}{*}{\rotatebox[origin=c]{90}{$avgC$}}&ip           &            &            &            &            &            & $+$*       &            &            & $-$        &            &            & $+$        &            &            & $-$         \\
+&ip\_m        &            &            &            &            &            & $+$*       &            &            & $-$        &            &            & $+$        &            &            & $-$         \\
+&m            &            &            &            & $-$*       & $-$*       &            & $+$        & $+$        &            & $-$        & $-$        &            & $+$        & $+$        &             \\
 \hline
 \hline
-\multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            & $+$        & $-$        &            & $+$        &            &            & $+$        &            &            & $-$        &             \\
-&ip\_m        &            &            &            & $-$        &            & $-$        & $-$        &            & $-$        & $-$        &            & $-$        & $+$        &            & $+$         \\
-&m            &            &            &            & $+$        & $+$        &            &            & $+$        &            &            & $+$        &            &            & $-$        &             \\
+\multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            & $-$        &            &            & $-$        &            &            & $+$        &            &            & $+$         \\
+&ip\_m        &            &            &            &            &            & $-$        &            &            & $-$        &            &            & $+$        &            &            & $+$         \\
+&m            &            &            &            & $+$        & $+$        &            & $+$        & $+$        &            & $-$        & $-$        &            & $-$        & $-$        &             \\
 \hline
 \multicolumn{2}{l|}{\textbf{DT}}  & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
 \hline
-\multirow{3}{*}{\rotatebox[origin=c]{90}{$avgC$}}&ip           &            &            &            &            & $+$        & $-$        &            & $+$        & $+$        &            & $-$        &            &            & $+$        &             \\
-&ip\_m        &            &            &            & $-$        &            & $-$        & $-$        &            & $-$        & $+$        &            & $+$        & $-$        &            & $-$         \\
-&m            &            &            &            & $+$        & $+$        &            & $-$        & $+$        &            &            & $-$        &            &            & $+$        &             \\
+\multirow{3}{*}{\rotatebox[origin=c]{90}{$avgC$}}&ip           &            &            &            &            &            & $-$        &            &            & $-$        &            &            & $-$        &            &            & $-$         \\
+&ip\_m        &            &            &            &            &            & $-$        &            &            & $-$        &            &            & $-$        &            &            & $-$         \\
+&m            &            &            &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &             \\
 \hline
 \hline
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            & $-$        &            &            & $-$*       &            &            & $-$        &            &            & $-$         \\
@@ -118,26 +118,26 @@
 &m            &            &            &            & $-$*       & $-$*       &            & $-$        & $-$        &            & $-$        & $-$        &            & $-$        & $-$        &             \\
 \hline
 \hline
-\multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            & $+$        &            &            & $+$        & $+$        &            & $+$        & $+$        &            & $-$        & $+$         \\
-&ip\_m        &            &            &            & $-$        &            & $-$        & $-$        &            & $+$        & $-$        &            & $+$        & $+$        &            & $+$         \\
-&m            &            &            &            &            & $+$        &            & $-$        & $-$        &            & $-$        & $-$        &            & $-$        & $-$        &             \\
+\multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            & $+$        &            &            & $-$        &            &            & $+$        &            &            & $+$         \\
+&ip\_m        &            &            &            &            &            & $+$        &            &            & $-$        &            &            & $+$        &            &            & $+$         \\
+&m            &            &            &            & $-$        & $-$        &            & $+$        & $+$        &            & $-$        & $-$        &            & $-$        & $-$        &             \\
 \hline
 \multicolumn{2}{l|}{\textbf{MPR}} & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
 \hline
-\multirow{3}{*}{\rotatebox[origin=c]{90}{$avgC$}}&ip           &            &            &            &            & $+$        & $-$        &            & $-$        & $-$        &            & $-$        & $-$        &            & $+$        & $-$         \\
-&ip\_m        &            &            &            & $-$        &            & $-$        & $+$        &            & $-$        & $+$        &            & $-$        & $-$        &            & $-$         \\
-&m            &            &            &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &             \\
+\multirow{3}{*}{\rotatebox[origin=c]{90}{$avgC$}}&ip           &            &            &            &            &            & $+$        &            &            & $+$        &            &            & $-$        &            &            & $-$         \\
+&ip\_m        &            &            &            &            &            & $+$        &            &            & $+$        &            &            & $-$        &            &            & $-$         \\
+&m            &            &            &            & $-$        & $-$        &            & $-$        & $-$        &            & $+$        & $+$        &            & $+$        & $+$        &             \\
 \hline
 \hline
-\multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            & $-$        & $-$        &            & $-$        & $-$*       &            & $-$        & $-$        &            & $-$        & $+$         \\
-&ip\_m        &            &            &            & $+$        &            & $+$        & $+$        &            & $-$*       & $+$        &            & $-$        & $+$        &            & $+$         \\
-&m            &            &            &            & $+$        & $-$        &            & $+$*       & $+$*       &            & $+$        & $+$        &            & $-$        & $-$        &             \\
+\multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            & $-$        & $-$        &            & $-$*       & $-$        &            & $-$        & $-$        &            & $-$        & $-$         \\
+&ip\_m        &            &            &            & $+$        &            & $+$        & $+$*       &            & $-$        & $+$        &            & $-$        & $+$        &            & $-$         \\
+&m            &            &            &            & $+$        & $-$        &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &             \\
 \hline
 \multicolumn{2}{l|}{\textbf{RF}}  & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m          & ip         & ip\_m      & m           \\
 \hline
-\multirow{3}{*}{\rotatebox[origin=c]{90}{$avgC$}}&ip           &            &            &            &            & $-$        & $+$        &            & $-$        & $-$        &            & $+$        & $+$        &            & $+$        & $-$         \\
-&ip\_m        &            &            &            & $+$        &            & $+$        & $+$        &            & $+$        & $-$        &            & $+$        & $-$        &            & $-$         \\
-&m            &            &            &            & $-$        & $-$        &            & $+$        & $-$        &            & $-$        & $-$        &            & $+$        & $+$        &             \\
+\multirow{3}{*}{\rotatebox[origin=c]{90}{$avgC$}}&ip           &            &            &            &            & $-$        & $+$        &            & $-$        & $-$        &            & $-$        & $+$        &            & $-$        & $+$         \\
+&ip\_m        &            &            &            & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$         \\
+&m            &            &            &            & $-$        & $-$        &            & $+$        & $-$        &            & $-$        & $-$        &            & $-$        & $-$        &             \\
 \hline
 \hline
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            &            &            &            & $-$        &            &            & $-$        &            &            &             \\
