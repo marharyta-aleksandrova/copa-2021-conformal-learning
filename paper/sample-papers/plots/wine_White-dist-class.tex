@@ -9,6 +9,8 @@ x grid style={white!69.0196078431373!black},
 xmajorgrids,
 xmin=2.26, xmax=9.74,
 xtick style={color=black},
+xtick={3,4,5,6,7,8,9},
+xticklabels = {1,2,3,4,5,6,7},
 y grid style={white!69.0196078431373!black},
 ymajorgrids,
 ymin=0, ymax=2307.9,
@@ -23,6 +25,16 @@ width=7cm,
 \draw[draw=none,fill=white!50.1960784313725!black] (axis cs:6.6,0) rectangle (axis cs:7.4,880);
 \draw[draw=none,fill=white!50.1960784313725!black] (axis cs:7.6,0) rectangle (axis cs:8.4,175);
 \draw[draw=none,fill=white!50.1960784313725!black] (axis cs:8.6,0) rectangle (axis cs:9.4,5);
+
+\node[draw=none,align=center] at (axis cs:3,170) {20};
+\node[draw=none,align=center] at (axis cs:4,313) {163};
+\node[draw=none,align=center] at (axis cs:5,1307) {1457};
+\node[draw=none,align=center] at (axis cs:6,2048) {2198};
+\node[draw=none,align=center] at (axis cs:7,730) {880};
+\node[draw=none,align=center] at (axis cs:8,325) {175};
+\node[draw=none,align=center] at (axis cs:9,155) {5};
+
+
 \end{axis}
 
 \end{tikzpicture}

@@ -10,7 +10,7 @@ xmajorgrids,
 xmin=-0.54, xmax=2.54,
 xtick style={color=black},
 xtick={0, 1, 2},
-xticklabels = {B, L, R},
+xticklabels = {1,2,3},
 y grid style={white!69.0196078431373!black},
 ymajorgrids,
 ymin=0, ymax=302.4,
@@ -21,6 +21,10 @@ width=7cm,
 \draw[draw=none,fill=white!50.1960784313725!black] (axis cs:-0.4,0) rectangle (axis cs:0.4,49);
 \draw[draw=none,fill=white!50.1960784313725!black] (axis cs:0.6,0) rectangle (axis cs:1.4,288);
 \draw[draw=none,fill=white!50.1960784313725!black] (axis cs:1.6,0) rectangle (axis cs:2.4,288);
+
+\node[draw=none,align=center] at (axis cs:0,29) {49};
+\node[draw=none,align=center] at (axis cs:1,268) {288};
+\node[draw=none,align=center] at (axis cs:2,268) {288};
 
 %\draw (axis cs:0,52) node[
 %  scale=0.5,

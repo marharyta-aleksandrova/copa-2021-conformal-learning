@@ -1,5 +1,29 @@
 \subsection{iris}
 
+Results for iris dataset are presented in \cref{fig:iris} and \cref{tab:iris}. 
+First of all, we can notice that the dataset is balanced and each of 3 classes contains the
+same number of instances, see \cref{fig:iris:dist-class}. All classifiers perform very good on this dataset with the baseline error ranging from 0.025\% for MRP to 0.06\% for DT, see 
+\cref{fig:iris:baseline-error}. The difference between the performance of difference 
+non-conformity functions is only slightly visible for $oneC$ of QDA classifier 
+\cref{fig:iris:oneC-RF-QDA}, and $avgC$ of MPR classifier \cref{fig:iris:avgC-GNB-MPR}.
+This is also supported by the results in \cref{tab:iris}\footnote{\textcolor{red}{If iris is presented in the paper, probably we do not need to show the table, there are no significant differences}}. 
+We can notice none of the nonconformity function results in statistically significant 
+values of $oneC$ and $avgC$. For many cases, the obtained results are also identical. This 
+holds for all setups with $\epsilon=0.01$ and for all setups with KNN classifier. The 
+values of $oneC$ metric are identical for Ada, GNB and QDA classifiers, although the values
+of $avgC$ are sometimes slightly different.
+
+We can also notice that different classifiers produce conformal predictors of different
+efficiency. Generally SVM, GNB, MPR and QDA classifiers produce conformal predictors of 
+high efficiency with close values of $oneC$ and $avgC$. These classifiers also have lower
+values of baseline error except GNB, see \cref{fig:iris:baseline-error}. On the other hand, 3 classifiers with lower accuracy, DT, ADA and RF produce classifiers of lower efficiency with DT being the worst both in accuracy and efficiency.
+KNN classifier, although of having larger accuracy than SVM, also has lower efficiency when
+used in conformal framework. Also, we can see that when the value of $\epsilon$ becomes larger than the baseline error of the corresponding baseline classifier, the value of $oneC$ of the relative conformal predictor starts decreasing and the value of $avgC$ is usually less than 1. This means that the confomal predictor starts producing prediction intervals with no labels. The only exception in this case is DT classifier for which the
+$b\_err \approx 0.06\%$, however the described tendency occurs only for $\epsilon \ge 0.15$. 
+This marks a natural boundary for \textbf{credibility} of the conformal classifiers\footnote{
+\textcolor{red}{To check this. Usually credibility together with confidence is defined for every instance. Is there general credibility for the whole dataset?}
+}.
+
 \begin{figure}[htbp]
 \floatconts
   {fig:iris}
@@ -10,40 +34,40 @@
     \includeteximage{plots/iris-dist-class}
     }%
     \qquad
-    \subfigure[Baseline error]{\label{fig:square}%
+    \subfigure[Baseline error, $b\_err$]{\label{fig:iris:baseline-error}%
       \includeteximage{plots/iris-baseline-error}
       }
     \qquad
-    \subfigure[$oneC$: SVM and DT]{\label{fig:square}%
+    \subfigure[$oneC$: SVM and DT]{\label{fig:iris:oneC-SVM-DT}%
       \includeteximage{plots/iris-oneC-0}
       %\includeteximage{plots/iris-dist-class}
       }
     \qquad
-    \subfigure[$avgC$: SVM and DT]{\label{fig:square}%
+    \subfigure[$avgC$: SVM and DT]{\label{fig:iris:avgC-SVM-DT}%
       \includeteximage{plots/iris-avgC-0}
       }
     \qquad
-    \subfigure[$oneC$: KNN and Ada]{\label{fig:square}%
+    \subfigure[$oneC$: KNN and Ada]{\label{fig:iris:oneC-KNN-Ada}%
       \includeteximage{plots/iris-oneC-2}
       }
     \qquad
-    \subfigure[$avgC$: KNN and Ada]{\label{fig:square}%
+    \subfigure[$avgC$: KNN and Ada]{\label{fig:iris:avgC-KNN-Ada}%
       \includeteximage{plots/iris-avgC-2}
       }
     \qquad
-    \subfigure[$oneC$: GNB and MPR]{\label{fig:square}%
+    \subfigure[$oneC$: GNB and MPR]{\label{fig:iris:oneC-GNB-MPR}%
       \includeteximage{plots/iris-oneC-4}
       }
     \qquad
-    \subfigure[$avgC$: GNB and MPR]{\label{fig:square}%
+    \subfigure[$avgC$: GNB and MPR]{\label{fig:iris:avgC-GNB-MPR}%
       \includeteximage{plots/iris-avgC-4}
       }
     \qquad
-    \subfigure[$oneC$: RF and QDA]{\label{fig:square}%
+    \subfigure[$oneC$: RF and QDA]{\label{fig:iris:oneC-RF-QDA}%
       \includeteximage{plots/iris-oneC-6}
       }
     \qquad
-    \subfigure[$avgC$: RF and QDA]{\label{fig:square}%
+    \subfigure[$avgC$: RF and QDA]{\label{fig:iris:avgC-RF-QDA}%
       \includeteximage{plots/iris-avgC-6}
       }
   }
@@ -55,7 +79,7 @@
  % The caption goes in the second argument, and the table contents
  % go in the third argument.
 \floatconts
-  {tab:iris-results}%
+  {tab:iris}%
   {\caption{iris dataset}}%
   {
 \begin{tabular}{cl|lll|lll|lll|lll|lll}
