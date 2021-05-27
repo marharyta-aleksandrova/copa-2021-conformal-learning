@@ -1,6 +1,40 @@
 \subsection{user}
 
-Results for \textit{user} dataset are presented in \cref{fig:user} and in \cref{tab:user}.
+Results for \textit{user} dataset are presented in \cref{fig:user} and in \cref{tab:user}. This 
+dataset is not perfectly balanced. But 3 our of 4 classes have around 100 instances and the last
+class has 2 times less, 50 instances, see \cref{fig:user:dist-class}. 5 classifiers (SVM, DT, 
+MPR, RF, QDA) also perform good on this dataset with the baseline error of less than 0.1\%. 3 
+other classifier, perform worse: GNB with $b\_err \approx 11\%$, KNN with $b\_err \approx 12\%$ 
+and Ada with $b\_err > 30\%$, see \cref{fig:user:baseline-error}. We expect conformal 
+classifiers based on these algorithms to give different results for different non-conformity 
+functions.
+And indeed, if we analyze the more detailed results from \cref{tab:user}, we see that for 
+conformal classifiers based on DT, MPR and QDA there is never statistical difference between 
+different non-conformity functions and sometimes the produced results are identical. As for SVM,
+we observe statistically significant difference in $avgC$ for $\epsilon = 0.05$ (inverse 
+probability is better). For RF statistically significant difference is observed only for 
+$\epsilon=0.1$ when \textit{ip\_m} non-conformity function outperforms \textit{ip} in terms of 
+$oneC$. Note, that even though \textit{m} non-conformity function has the best mean value of 
+$one$, it does not outperform \textit{ip} in a statistically significant way.
+
+As for the 3 less accurate classifiers (KNN, Ada and GNB), we can see clear difference in 
+\cref{fig:user:oneC-KNN-Ada}, \cref{fig:user:avgC-KNN-Ada} and \cref{fig:user:avgC-GNB-MPR}.
+The first thing that we can notice, is that \textit{margin} is the best choice of non-conformity
+function for KNN-based conformal predictor: it results in both higher values of $oneC$ and 
+$avgC$. This is also confirmed by the results presented in \cref{tab:user}. As for the Ada-based
+conformal predictor, the situation is opposite. \textit{Inverse probability} seems to be the
+best choice of non-conformity function. Additionally, the combination of both non-conformity
+functions which we refer to as \textit{ip\_m} allows to further improve $oneC$ and $avgC$ in
+terms of the average results, see \cref{tab:user}. Lastly, for the GNP we can observe the 
+pattern described before, that is \textit{margin} tend to result in higher value of $oneC$
+and \textit{inverse probability} results in lover values of $avgC$. However, statistically 
+significant and visually visible difference is observed only for $avgC$ when $\epsilon=0.5$.
+For this value of $\epsilon$ \textit{ip\_m} approach also allows to improve the results provided by \textit{inverse probability} in terms of average performance.
+
+The best conformal predictors are SVM, MPR and QDA and also have very similar behaviour in terms
+of $oneC$ and $avgC$. These are the 3 best baseline classification models with $b\_err$ being 
+around 5\%. The worst conformal predictor is the one based on Ada classifier. The latter also
+has the largest value of the baseline error.
 
 \begin{figure}[htbp]
 \floatconts
@@ -65,6 +99,7 @@ Results for \textit{user} dataset are presented in \cref{fig:user} and in \cref{
              && \multicolumn{3}{c|}{$\epsilon=0.01$} & \multicolumn{3}{c|}{$\epsilon=0.05$} & \multicolumn{3}{c|}{$\epsilon=0.1$} & \multicolumn{3}{c|}{$\epsilon=0.15$} & \multicolumn{3}{c}{$\epsilon=0.2$} \\
 \hline
 \hline
+\hline
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            & $+$        &            &            & $+$        &            &            & $-$        &            &            & $+$         \\
 &ip\_m        &            &            &            &            &            & $+$        &            &            & $+$        &            &            & $-$        &            &            & $+$         \\
 &m            &            &            &            & $-$        & $-$        &            & $-$        & $-$        &            & $+$        & $+$        &            & $-$        & $-$        &             \\
@@ -74,6 +109,7 @@ Results for \textit{user} dataset are presented in \cref{fig:user} and in \cref{
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$avgC$}}&ip           &            &            &            &            &            & $+$*       &            &            & $-$        &            &            & $+$        &            &            & $-$         \\
 &ip\_m        &            &            &            &            &            & $+$*       &            &            & $-$        &            &            & $+$        &            &            & $-$         \\
 &m            &            &            &            & $-$*       & $-$*       &            & $+$        & $+$        &            & $-$        & $-$        &            & $+$        & $+$        &             \\
+\hline
 \hline
 \hline
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            & $-$        &            &            & $-$        &            &            & $+$        &            &            & $+$         \\
@@ -87,6 +123,7 @@ Results for \textit{user} dataset are presented in \cref{fig:user} and in \cref{
 &m            &            &            &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &             \\
 \hline
 \hline
+\hline
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            & $-$        &            &            & $-$*       &            &            & $-$        &            &            & $-$         \\
 &ip\_m        &            &            &            &            &            & $-$        &            &            & $-$*       &            &            & $-$        &            &            & $-$         \\
 &m            &            &            &            & $+$        & $+$        &            & $+$*       & $+$*       &            & $+$        & $+$        &            & $+$        & $+$        &             \\
@@ -96,6 +133,7 @@ Results for \textit{user} dataset are presented in \cref{fig:user} and in \cref{
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$avgC$}}&ip           &            &            &            &            &            & $-$        &            &            & $-$*       &            &            & $-$        &            &            & $-$         \\
 &ip\_m        &            &            &            &            &            & $-$        &            &            & $-$*       &            &            & $-$        &            &            & $-$         \\
 &m            &            &            &            & $+$        & $+$        &            & $+$*       & $+$*       &            & $+$        & $+$        &            & $+$        & $+$        &             \\
+\hline
 \hline
 \hline
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            & $+$        &            & $-$        & $+$        &            & $-$        & $+$        &            & $-$        & $-$         \\
@@ -109,6 +147,7 @@ Results for \textit{user} dataset are presented in \cref{fig:user} and in \cref{
 &m            &            &            &            & $-$*       & $-$*       &            & $-$*       & $-$*       &            & $-$*       & $-$*       &            & $-$        & $-$*       &             \\
 \hline
 \hline
+\hline
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            & $-$        & $-$        &            &            & $-$        &            &            & $-$        &            &            &             \\
 &ip\_m        &            &            &            & $+$        &            & $-$        &            &            & $-$        &            &            & $-$        &            &            &             \\
 &m            &            &            &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &            &            &            &             \\
@@ -118,6 +157,7 @@ Results for \textit{user} dataset are presented in \cref{fig:user} and in \cref{
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$avgC$}}&ip           &            &            &            &            & $-$        & $+$*       &            &            & $+$        &            &            & $+$        &            &            & $+$         \\
 &ip\_m        &            &            &            & $+$        &            & $+$*       &            &            & $+$        &            &            & $+$        &            &            & $+$         \\
 &m            &            &            &            & $-$*       & $-$*       &            & $-$        & $-$        &            & $-$        & $-$        &            & $-$        & $-$        &             \\
+\hline
 \hline
 \hline
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            & $+$        &            &            & $-$        &            &            & $+$        &            &            & $+$         \\
@@ -131,6 +171,7 @@ Results for \textit{user} dataset are presented in \cref{fig:user} and in \cref{
 &m            &            &            &            & $-$        & $-$        &            & $-$        & $-$        &            & $+$        & $+$        &            & $+$        & $+$        &             \\
 \hline
 \hline
+\hline
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            & $-$        & $-$        &            & $-$*       & $-$        &            & $-$        & $-$        &            & $-$        & $-$         \\
 &ip\_m        &            &            &            & $+$        &            & $+$        & $+$*       &            & $-$        & $+$        &            & $-$        & $+$        &            & $-$         \\
 &m            &            &            &            & $+$        & $-$        &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &             \\
@@ -142,6 +183,7 @@ Results for \textit{user} dataset are presented in \cref{fig:user} and in \cref{
 &m            &            &            &            & $-$        & $-$        &            & $+$        & $-$        &            & $-$        & $-$        &            & $-$        & $-$        &             \\
 \hline
 \hline
+\hline
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            &            &            &            & $-$        &            &            & $-$        &            &            &             \\
 &ip\_m        &            &            &            &            &            &            &            &            & $-$        &            &            & $-$        &            &            &             \\
 &m            &            &            &            &            &            &            & $+$        & $+$        &            & $+$        & $+$        &            &            &            &             \\
@@ -151,7 +193,6 @@ Results for \textit{user} dataset are presented in \cref{fig:user} and in \cref{
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$avgC$}}&ip           &            &            &            &            &            & $+$        &            &            & $+$        &            &            & $+$        &            &            &             \\
 &ip\_m        &            &            &            &            &            & $+$        &            &            & $+$        &            &            & $+$        &            &            &             \\
 &m            &            &            &            & $-$        & $-$        &            & $-$        & $-$        &            & $-$        & $-$        &            &            &            &             \\
-\hline
 \hline
 \end{tabular}
 

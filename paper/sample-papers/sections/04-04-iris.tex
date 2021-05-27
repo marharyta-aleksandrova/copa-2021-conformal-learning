@@ -23,6 +23,7 @@ $b\_err \approx 0.06\%$, however the described tendency occurs only for $\epsilo
 This marks a natural boundary for \textbf{credibility} of the conformal classifiers\footnote{
 \textcolor{red}{To check this. Usually credibility together with confidence is defined for every instance. Is there general credibility for the whole dataset?}
 }.
+When $\epsilon \approx b\_err$, we reach max of $oneC$ and $oneC \approx 1 - b\_err$ and $avgC=1$.
 
 \begin{figure}[htbp]
 \floatconts
@@ -86,6 +87,7 @@ This marks a natural boundary for \textbf{credibility} of the conformal classifi
              && \multicolumn{3}{c|}{$\epsilon=0.01$} & \multicolumn{3}{c|}{$\epsilon=0.05$} & \multicolumn{3}{c|}{$\epsilon=0.1$} & \multicolumn{3}{c|}{$\epsilon=0.15$} & \multicolumn{3}{c}{$\epsilon=0.2$} \\
 \hline
 \hline
+\hline
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            & $-$        &            &            & $+$        &            &            & $+$        &            &            & $+$         \\
 &ip\_m        &            &            &            &            &            & $-$        &            &            & $+$        &            &            & $+$        &            &            & $+$         \\
 &m            &            &            &            & $+$        & $+$        &            & $-$        & $-$        &            & $-$        & $-$        &            & $-$        & $-$        &             \\
@@ -97,6 +99,7 @@ This marks a natural boundary for \textbf{credibility} of the conformal classifi
 &m            &            &            &            & $-$        & $-$        &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &             \\
 \hline
 \hline
+\hline
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            & $+$        &            & $-$        & $-$        &            &            & $+$        &            &            & $+$         \\
 &ip\_m        &            &            &            &            &            & $+$        & $+$        &            & $-$        &            &            & $+$        &            &            & $+$         \\
 &m            &            &            &            & $-$        & $-$        &            & $+$        & $+$        &            & $-$        & $-$        &            & $-$        & $-$        &             \\
@@ -106,6 +109,7 @@ This marks a natural boundary for \textbf{credibility} of the conformal classifi
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$avgC$}}&ip           &            &            &            &            &            & $+$        &            & $-$        & $-$        &            &            & $-$        &            &            & $-$         \\
 &ip\_m        &            &            &            &            &            & $+$        & $+$        &            & $-$        &            &            & $-$        &            &            & $-$         \\
 &m            &            &            &            & $-$        & $-$        &            & $+$        & $+$        &            & $+$        & $+$        &            & $+$        & $+$        &             \\
+\hline
 \hline
 \hline
 \multirow{3}{*}{\rotatebox[origin=c]{90}{$oneC$}}&ip           &            &            &            &            &            &            &            &            &            &            &            &            &            &            &             \\
