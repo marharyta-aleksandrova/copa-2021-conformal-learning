@@ -1,0 +1,48 @@
+\begin{figure}[htbp]
+\floatconts
+  {fig:cars}
+  {\caption{Results for \textit{cars} dataset.}}
+  {%
+    \subfigure[Distribution between classes]{
+    \label{fig:cars:dist-class}%
+    \includeteximage{plots/cars-dist-class}
+    }%
+    \qquad
+    \subfigure[Baseline error, $b\_err$]{\label{fig:cars:baseline-error}%
+      \includeteximage{plots/cars-baseline-error}
+      }
+    \qquad
+    \subfigure[$oneC$: SVM and DT]{\label{fig:cars:oneC-SVM-DT}%
+      \includeteximage{plots/cars-oneC-0}
+      %\includeteximage{plots/cars-dist-class}
+      }
+    \qquad
+    \subfigure[$avgC$: SVM and DT]{\label{fig:cars:avgC-SVM-DT}%
+      \includeteximage{plots/cars-avgC-0}
+      }
+    \qquad
+    \subfigure[$oneC$: KNN and Ada]{\label{fig:cars:oneC-KNN-Ada}%
+      \includeteximage{plots/cars-oneC-2}
+      }
+    \qquad
+    \subfigure[$avgC$: KNN and Ada]{\label{fig:cars:avgC-KNN-Ada}%
+      \includeteximage{plots/cars-avgC-2}
+      }
+    \qquad
+    \subfigure[$oneC$: GNB and MPR]{\label{fig:cars:oneC-GNB-MPR}%
+      \includeteximage{plots/cars-oneC-4}
+      }
+    \qquad
+    \subfigure[$avgC$: GNB and MPR]{\label{fig:cars:avgC-GNB-MPR}%
+      \includeteximage{plots/cars-avgC-4}
+      }
+    \qquad
+    \subfigure[$oneC$: RF and QDA]{\label{fig:cars:oneC-RF-QDA}%
+      \includeteximage{plots/cars-oneC-6}
+      }
+    \qquad
+    \subfigure[$avgC$: RF and QDA]{\label{fig:cars:avgC-RF-QDA}%
+      \includeteximage{plots/cars-avgC-6}
+      }
+  }
+\end{figure}

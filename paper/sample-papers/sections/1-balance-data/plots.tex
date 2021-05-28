@@ -1,0 +1,48 @@
+\begin{figure}[htbp]
+\floatconts
+  {fig:balance}
+  {\caption{Results for \textit{balance} dataset.}}
+  {%
+    \subfigure[Distribution between classes]{
+    \label{fig:balance:dist-class}%
+    \includeteximage{plots/balance-dist-class}
+    }%
+    \qquad
+    \subfigure[Baseline error]{\label{fig:square}%
+      \includeteximage{plots/balance-baseline-error}
+      }
+    \qquad
+    \subfigure[$oneC$: SVM and DT]{\label{fig:square}%
+      \includeteximage{plots/balance-oneC-0}
+      %\includeteximage{plots/balance-dist-class}
+      }
+    \qquad
+    \subfigure[$avgC$: SVM and DT]{\label{fig:square}%
+      \includeteximage{plots/balance-avgC-0}
+      }
+    \qquad
+    \subfigure[$oneC$: KNN and Ada]{\label{fig:square}%
+      \includeteximage{plots/balance-oneC-2}
+      }
+    \qquad
+    \subfigure[$avgC$: KNN and Ada]{\label{fig:square}%
+      \includeteximage{plots/balance-avgC-2}
+      }
+    \qquad
+    \subfigure[$oneC$: GNB and MPR]{\label{fig:square}%
+      \includeteximage{plots/balance-oneC-4}
+      }
+    \qquad
+    \subfigure[$avgC$: GNB and MPR]{\label{fig:square}%
+      \includeteximage{plots/balance-avgC-4}
+      }
+    \qquad
+    \subfigure[$oneC$: RF and QDA]{\label{fig:square}%
+      \includeteximage{plots/balance-oneC-6}
+      }
+    \qquad
+    \subfigure[$avgC$: RF and QDA]{\label{fig:square}%
+      \includeteximage{plots/balance-avgC-6}
+      }
+  }
+\end{figure}

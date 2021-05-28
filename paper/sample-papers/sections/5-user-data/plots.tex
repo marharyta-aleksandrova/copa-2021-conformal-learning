@@ -1,0 +1,48 @@
+\begin{figure}[htbp]
+\floatconts
+  {fig:user}
+  {\caption{Results for \textit{user} dataset.}}
+  {%
+    \subfigure[Distribution between classes]{
+    \label{fig:user:dist-class}%
+    \includeteximage{plots/user-dist-class}
+    }%
+    \qquad
+    \subfigure[Baseline error, $b\_err$]{\label{fig:user:baseline-error}%
+      \includeteximage{plots/user-baseline-error}
+      }
+    \qquad
+    \subfigure[$oneC$: SVM and DT]{\label{fig:user:oneC-SVM-DT}%
+      \includeteximage{plots/user-oneC-0}
+      %\includeteximage{plots/user-dist-class}
+      }
+    \qquad
+    \subfigure[$avgC$: SVM and DT]{\label{fig:user:avgC-SVM-DT}%
+      \includeteximage{plots/user-avgC-0}
+      }
+    \qquad
+    \subfigure[$oneC$: KNN and Ada]{\label{fig:user:oneC-KNN-Ada}%
+      \includeteximage{plots/user-oneC-2}
+      }
+    \qquad
+    \subfigure[$avgC$: KNN and Ada]{\label{fig:user:avgC-KNN-Ada}%
+      \includeteximage{plots/user-avgC-2}
+      }
+    \qquad
+    \subfigure[$oneC$: GNB and MPR]{\label{fig:user:oneC-GNB-MPR}%
+      \includeteximage{plots/user-oneC-4}
+      }
+    \qquad
+    \subfigure[$avgC$: GNB and MPR]{\label{fig:user:avgC-GNB-MPR}%
+      \includeteximage{plots/user-avgC-4}
+      }
+    \qquad
+    \subfigure[$oneC$: RF and QDA]{\label{fig:user:oneC-RF-QDA}%
+      \includeteximage{plots/user-oneC-6}
+      }
+    \qquad
+    \subfigure[$avgC$: RF and QDA]{\label{fig:user:avgC-RF-QDA}%
+      \includeteximage{plots/user-avgC-6}
+      }
+  }
+\end{figure}

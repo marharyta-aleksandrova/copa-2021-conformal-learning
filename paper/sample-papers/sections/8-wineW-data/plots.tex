@@ -1,0 +1,51 @@
+
+
+\begin{figure}[htbp]
+\floatconts
+  {fig:wineWhite}
+  {\caption{Results for \textit{wineWhite} dataset.}}
+  {%
+    \subfigure[Distribution between classes]{
+    \label{fig:wineWhite:dist-class}%
+    \includeteximage{plots/wine_White-dist-class}
+    }%
+    \qquad
+    \subfigure[Baseline error, $b\_err$]{\label{fig:wineWhite:baseline-error}%
+      \includeteximage{plots/wine_White-baseline-error}
+      }
+    \qquad
+    \subfigure[$oneC$: SVM and DT]{\label{fig:wineWhite:oneC-SVM-DT}%
+      \includeteximage{plots/wine_White-oneC-0}
+      %\includeteximage{plots/wine_White-dist-class}
+      }
+    \qquad
+    \subfigure[$avgC$: SVM and DT]{\label{fig:wineWhite:avgC-SVM-DT}%
+      \includeteximage{plots/wine_White-avgC-0}
+      }
+    \qquad
+    \subfigure[$oneC$: KNN and Ada]{\label{fig:wineWhite:oneC-KNN-Ada}%
+      \includeteximage{plots/wine_White-oneC-2}
+      }
+    \qquad
+    \subfigure[$avgC$: KNN and Ada]{\label{fig:wineWhite:avgC-KNN-Ada}%
+      \includeteximage{plots/wine_White-avgC-2}
+      }
+    \qquad
+    \subfigure[$oneC$: GNB and MPR]{\label{fig:wineWhite:oneC-GNB-MPR}%
+      \includeteximage{plots/wine_White-oneC-4}
+      }
+    \qquad
+    \subfigure[$avgC$: GNB and MPR]{\label{fig:wineWhite:avgC-GNB-MPR}%
+      \includeteximage{plots/wine_White-avgC-4}
+      }
+    \qquad
+    \subfigure[$oneC$: RF and QDA]{\label{fig:wineWhite:oneC-RF-QDA}%
+      \includeteximage{plots/wine_White-oneC-6}
+      }
+    \qquad
+    \subfigure[$avgC$: RF and QDA]{\label{fig:wineWhite:avgC-RF-QDA}%
+      \includeteximage{plots/wine_White-avgC-6}
+      }
+  }
+\end{figure}
+

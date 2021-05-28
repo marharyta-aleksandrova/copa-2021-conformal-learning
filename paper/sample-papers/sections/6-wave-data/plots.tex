@@ -1,0 +1,50 @@
+\begin{figure}[htbp]
+\floatconts
+  {fig:wave}
+  {\caption{Results for \textit{wave} dataset.}}
+  {%
+    \subfigure[Distribution between classes]{
+    \label{fig:wave:dist-class}%
+    \includeteximage{plots/wave-dist-class}
+    }%
+    \qquad
+    \subfigure[Baseline error, $b\_err$]{\label{fig:wave:baseline-error}%
+      \includeteximage{plots/wave-baseline-error}
+      }
+    \qquad
+    \subfigure[$oneC$: SVM and DT]{\label{fig:wave:oneC-SVM-DT}%
+      \includeteximage{plots/wave-oneC-0}
+      %\includeteximage{plots/wave-dist-class}
+      }
+    \qquad
+    \subfigure[$avgC$: SVM and DT]{\label{fig:wave:avgC-SVM-DT}%
+      \includeteximage{plots/wave-avgC-0}
+      }
+    \qquad
+    \subfigure[$oneC$: KNN and Ada]{\label{fig:wave:oneC-KNN-Ada}%
+      \includeteximage{plots/wave-oneC-2}
+      }
+    \qquad
+    \subfigure[$avgC$: KNN and Ada]{\label{fig:wave:avgC-KNN-Ada}%
+      \includeteximage{plots/wave-avgC-2}
+      }
+    \qquad
+    \subfigure[$oneC$: GNB and MPR]{\label{fig:wave:oneC-GNB-MPR}%
+      \includeteximage{plots/wave-oneC-4}
+      }
+    \qquad
+    \subfigure[$avgC$: GNB and MPR]{\label{fig:wave:avgC-GNB-MPR}%
+      \includeteximage{plots/wave-avgC-4}
+      }
+    \qquad
+    \subfigure[$oneC$: RF and QDA]{\label{fig:wave:oneC-RF-QDA}%
+      \includeteximage{plots/wave-oneC-6}
+      }
+    \qquad
+    \subfigure[$avgC$: RF and QDA]{\label{fig:wave:avgC-RF-QDA}%
+      \includeteximage{plots/wave-avgC-6}
+      }
+  }
+\end{figure}
+
+

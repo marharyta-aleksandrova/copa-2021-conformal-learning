@@ -1,0 +1,48 @@
+\begin{figure}[htbp]
+\floatconts
+  {fig:iris}
+  {\caption{Results for \textit{iris} dataset.}}
+  {%
+    \subfigure[Distribution between classes]{
+    \label{fig:iris:dist-class}%
+    \includeteximage{plots/iris-dist-class}
+    }%
+    \qquad
+    \subfigure[Baseline error, $b\_err$]{\label{fig:iris:baseline-error}%
+      \includeteximage{plots/iris-baseline-error}
+      }
+    \qquad
+    \subfigure[$oneC$: SVM and DT]{\label{fig:iris:oneC-SVM-DT}%
+      \includeteximage{plots/iris-oneC-0}
+      %\includeteximage{plots/iris-dist-class}
+      }
+    \qquad
+    \subfigure[$avgC$: SVM and DT]{\label{fig:iris:avgC-SVM-DT}%
+      \includeteximage{plots/iris-avgC-0}
+      }
+    \qquad
+    \subfigure[$oneC$: KNN and Ada]{\label{fig:iris:oneC-KNN-Ada}%
+      \includeteximage{plots/iris-oneC-2}
+      }
+    \qquad
+    \subfigure[$avgC$: KNN and Ada]{\label{fig:iris:avgC-KNN-Ada}%
+      \includeteximage{plots/iris-avgC-2}
+      }
+    \qquad
+    \subfigure[$oneC$: GNB and MPR]{\label{fig:iris:oneC-GNB-MPR}%
+      \includeteximage{plots/iris-oneC-4}
+      }
+    \qquad
+    \subfigure[$avgC$: GNB and MPR]{\label{fig:iris:avgC-GNB-MPR}%
+      \includeteximage{plots/iris-avgC-4}
+      }
+    \qquad
+    \subfigure[$oneC$: RF and QDA]{\label{fig:iris:oneC-RF-QDA}%
+      \includeteximage{plots/iris-oneC-6}
+      }
+    \qquad
+    \subfigure[$avgC$: RF and QDA]{\label{fig:iris:avgC-RF-QDA}%
+      \includeteximage{plots/iris-avgC-6}
+      }
+  }
+\end{figure}
