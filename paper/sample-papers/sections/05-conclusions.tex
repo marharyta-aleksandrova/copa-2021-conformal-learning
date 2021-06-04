@@ -1,0 +1,52 @@
+\section{Conclusions and Future Work}
+\label{sec:conclusions}
+
+The objective of this paper is to further extend the recent results presented by
+\cite{johansson2017model} stating that there is a relationship between different model-agnostic
+nonconformity functions and the values of $oneC$ and $avgC$. Through an empirical evaluation with 
+ANN-based conformal predictors, 
+the authors showed that the usage of \textit{margin} nonconformity function results in higher values of
+$oneC$ and \textit{inverse probability} nonconformity function allows to achieve lower values
+of $avgC$. Next, it is up to the user to decide which metric should be preferred and to choose an
+appropriate nonconformity function.
+We aim to check if the same pattern would be observed for other classification algorithms.
+Through experimental evaluation we showed that the previously observed pattern is supported in most of
+the cases, however, some classifiers and/or datasets clearly `prefer' \textit{margin}.
+This was observed for the KNN classifier and \verb|balance| dataset.
+At the same time, \textit{inverse probability} is the best choice of nonconformity function only in
+a very small number of cases. The latter such pattern can be considered an exception rather than a rule.
+
+We also proposed a method to combine \textit{margin} and \textit{inverse probability} into a model 
+that we denote by \textit{IP\_M}. We showed that \textit{IP\_M} can be considered as an improved 
+version of conformal predictor based on \textit{IP} making this approach preferable for minimization
+of $avgC$ in most of the cases. Additionally, it was shown that \textit{IP\_M} can be the best
+model in terms of both $oneC$ and $avgC$ in some cases: MPR-based conformal predictors
+for \verb|glass| dataset, and RF-based conformal predictors for \verb|cars| and \verb|wave|.
+The validity of this approach was confirmed experimentally.
+
+Finally, we studied how the effectiveness of the baseline classification algorithm on the given
+dataset can impact the efficiency of the related conformal predictor. In particular, we showed
+that a fraction of singleton predictions that contain the true label correlates strongly with 
+the baseline accuracy. This observation suggests that $oneC$ metric can be misleading in
+the case of a poorly performing baseline classifier. Our experiments also demonstrate that usually
+classification algorithms with higher values of baseline accuracy result in more efficient
+conformal predictors.
+
+Some directions for future work are the following. It can be interesting to confirm that KNN-based
+conformal predictors work better with \textit{margin} nonconformity function in the case of other 
+datasets. Further, we would like to study which characteristics of baseline classifiers and
+datasets make them work better with a particular nonconformity function. For example, for
+\verb|balance| dataset SVM-based conformal predictor is the only one that does not `prefer'
+\textit{margin} and follows the originally observed pattern. Next, we would like to investigate 
+if the proposed method for combining \textit{margin} and \textit{inverse probability} can be improved
+using the latest results in assembling conformal predictors such as in \citep{toccaceli2019conformal}. 
+
+
+%\begin{itemize}
+    
+%    \item - In this article a very generic method is proposed which takes advantage of a well-established result in Classical Statistical Hypothesis Testing, the NeymanPearson Lemma
+    
+%    \item \cite{vovk2014criteria} - This paper investigates properties of various criteria of efficiency of conformal prediction in the case of classification.
+    
+%    \item how to identify the best combination ($\epsilon$ for margin)
+%\end{itemize}

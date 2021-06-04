@@ -20,6 +20,9 @@
 \usepackage[load-configurations=version-1]{siunitx} % newer version
  %\usepackage{siunitx}
 \usepackage{multirow}
+\usepackage{rotating}
+
+\usepackage{wrapfig}
 
 \usepackage{tikz,pgfplots}%,pgfplots,color,amsmath,amssymb}
 %\usepackage{caption}
@@ -103,7 +106,7 @@ Impact of Model-Agnostic Nonconformity Functions on Efficiency of Conformal Clas
   \AND
   \Name{Oleg Chertov} \Email{chertov@i.ua}\\
   \addr National Technical University of Ukraine "Igor Sikorsky Kyiv Polytechnic Institute", \\
-  Department of Applied Mathematics, 14-A Politekhnichna St, 03056 Kyiv, Ukraine
+  Applied Mathematics Department, 14-A Politekhnichna St, 03056 Kyiv, Ukraine
  }
 
 \editor{Editor's name}
@@ -114,7 +117,7 @@ Impact of Model-Agnostic Nonconformity Functions on Efficiency of Conformal Clas
 \maketitle
 
 \begin{abstract}
-The property of Conformal prediction to guarantee the required accuracy rate makes this framework attractive in various practical applications. However, this property is achieved at a price of reduction in precision. In the case of conformal classification, for example, the systems can output multiple class labels instead of one. It is also known from the literature that the choice of nonconformity function has a major impact on the efficiency of conformal classifiers. Recently it was shown that different model-agnostic nonconformity functions result in conformal classifiers with different characteristics. In the case of Neural Network being used as a baseline classifier, the non-conformity function based on hinge loss allows minimizing the average number of predicted labels, while the non-conformity function based on margin results in a larger fraction of singleton predictions. In this work, we aim to further extend this study. We perform our evaluation using 8 different classification algorithms and discuss when the observed relationship holds or not. Additionally, we analyze the characteristics of hinge loss and margin and give suggestions on how to combine the properties of these two non-conformity functions.
+The property of conformal predictors to guarantee the required accuracy rate makes this framework attractive in various practical applications. However, this property is achieved at a price of reduction in precision. In the case of conformal classification, the systems can output multiple class labels instead of one. It is also known from the literature, that the choice of nonconformity function has a major impact on the efficiency of conformal classifiers. Recently, it was shown that different model-agnostic nonconformity functions result in conformal classifiers with different characteristics. For a Neural Network-based conformal classifier, the \textit{inverse probability} (or hinge loss) allows minimizing the average number of predicted labels, and \textit{margin} results in a larger fraction of singleton predictions. In this work, we aim to further extend this study. We perform an experimental evaluation using 8 different classification algorithms and discuss when the previously observed relationship holds or not. Additionally, we propose a successful method to combine the properties of these two nonconformity functions.
 \end{abstract}
 \begin{keywords}
 Conformal classification,
@@ -124,20 +127,34 @@ Efficiency
 
 %\input{sections/old-text}
 
-\input{sections/04-experiments}
+\input{paper/sample-papers/sections/01-into}
 
-\acks{Acknowledgements go here.}
+\input{paper/sample-papers/sections/02-literature}
+
+\input{paper/sample-papers/sections/03-our-approach}
+
+\input{paper/sample-papers/sections/04-1-experimental-setup-dataset}
+
+\input{paper/sample-papers/sections/04-2-experiments}
+
+\input{paper/sample-papers/sections/05-conclusions}
+
+\acks{This work was partially supported by the European Union 
+Horizon 2020 research programme  within
+the project CITIES2030 ``Co-creating resilient and sustainable food towards 
+FOOD2030'', grant 101000640.}
+
 
 \bibliography{jmlr-sample}
 
 \appendix
 
-\section{First Appendix}\label{apd:first}
+%\section{First Appendix}\label{apd:first}
 
-This is the first appendix.
+%This is the first appendix.
 
-\section{Second Appendix}\label{apd:second}
+%\section{Second Appendix}\label{apd:second}
 
-This is the second appendix.
+%This is the second appendix.
 
 \end{document}

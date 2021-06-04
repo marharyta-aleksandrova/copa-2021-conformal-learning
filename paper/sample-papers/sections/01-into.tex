@@ -1,0 +1,69 @@
+\section{Introduction}
+\label{sec:intro}
+
+Conformal prediction \citep{shafer2008tutorial,vovk2005algorithmic} is a 
+framework that produces predictions with accuracy guarantees.
+For a given value of significance level $\epsilon \in (0;1)$, a conformal predictor is guaranteed to make exactly $\epsilon$ errors in the long run.
+This is achieved at a price of a reduction in prediction precision. 
+Instead of predicting a single class label, in the case of classification, or a single
+number, in the case of regression, a conformal predictor outputs a range prediction, 
+that is a set of class labels or an
+interval that contains the true value with probability $\epsilon$.
+
+Construction of a conformal predictor with $\epsilon = 1$ is a trivial task.
+It is enough to output all class labels or an unbounded interval in case of classification and
+regression respectively.
+However, such a predictor is of low value, that is, it is not \textit{efficient}.
+The question thus is how to guarantee the 
+given level of error rate ($\epsilon$) by producing the smallest prediction regions.
+This property is achieved via the definition of a proper nonconformity function that 
+succeeds to measure the \textit{strangeness} or \textit{nonconformity} of every data
+instance \citep{shafer2008tutorial}.
+
+In the case of classification, the \textit{efficiency} of a conformal predictor is often measured in terms of 2 metrics: $avgC$, which stands for the average 
+number of predicted class labels per instance, and $oneC$, which stands for 
+the fraction of produced singleton predictions. 
+Naturally, one would want to minimize $avgC$ and maximize $oneC$ at the
+same time.
+A recent study by \cite{johansson2017model} showed that \emph{the usage of the nonconformity
+function known as \textit{margin} results in higher $oneC$ and the usage of \textit{inverse probability} (also known as $hinge$) as a nonconformal function results in lower
+values of $avgC$}.
+In the rest of the text, we will refer to this relationship as a baseline or original pattern
+(relationship).
+The authors use 21 datasets to demonstrate the statistical significance of this relationship. However, this was done for the case where the baseline classifiers were either  a single neural network (ANNs) or an ensemble of bagged ANNs. In this paper, we aim to extend this study with the following contributions:
+\begin{enumerate}
+    \item We study if the same pattern is present when other
+    classification algorithms are used. Our experimental results with 8 
+    different classifiers and 9 publicly available datasets show that although
+    the previously observed pattern does hold in the majority of the cases, 
+    the choice of the best nonconformity function can depend on the analyzed 
+    dataset and the chosen underlying classification model. For example, 
+    $k$-nearest neighbours classifier performs best with \textit{margin}.
+    \textit{Margin} is also the best choice in case of \verb|balance| dataset
+    regardless of the chosen classification model.
+
+    \item We propose a method to combine both nonconformity functions. 
+    Our experimental evaluation shows that this combination always results 
+    in better or the same performance as \textit{inverse probability}, thus 
+    allowing to increase the value of $oneC$ and decrease the value of
+    $avgC$.
+    In some cases, the proposed combination outperforms both 
+    \textit{inverse probability} and \textit{margin} in terms of both efficiency characteristics.
+    
+    \item We discuss several aspects of how the accuracy of the baseline 
+    classifier can impact the performance of the resulting conformal
+    predictor. In particular, if the baseline prediction accuracy is very
+    good, then nonconformity
+    functions have no impact on the efficiency.
+    Also, the accuracy of the baseline classifier strongly correlates
+    with the fraction of singleton predictions that contain the true label.
+    In this way, the accuracy can be an indicator of the usefulness of the $oneC$
+    metric.
+
+\end{enumerate}
+ 
+The rest of the paper is organized as follows. In \cref{sec:literature} we discuss related works. \cref{sec:our-approach} is dedicated to the description of the proposed strategy to combine advantages of \textit{margin} and \textit{inverse probability} nonconformity functions. \cref{sec:setup} and \cref{sec:experiments} present the experimental setup and results. Finally, we summarize our work in \cref{sec:conclusions}.
+
+
+
+

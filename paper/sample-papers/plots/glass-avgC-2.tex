@@ -12,20 +12,22 @@ x grid style={white!69.0196078431373!black},
 xmajorgrids,
 xmin=0.000499999999999999, xmax=0.2095,
 xtick style={color=black},
-xtick={.01,.03,.05,.1,.15,.2},
+xtick={.01,.05,.1,.15,.2},
 %xticklabels = {.01,.03,.05,.1,.15,.2},
 xticklabels = {,,,,,},
 y grid style={white!69.0196078431373!black},
 ymajorgrids,
 ymin=-0.045, ymax=6.336,
 ytick style={color=black},
+ytick={0,1,2,3,4,5,6},
+yticklabels = {0,1,2,3,4,5,6},
 height=4.3cm,
 width=7cm,
 ]
 \addplot [very thick, color0, dashed, forget plot]
 table {%
 0.01 5.76
-0.03 4.90809523809524
+%0.03 4.90809523809524
 0.05 3.87
 0.1 2.85809523809524
 0.15 2.18857142857143
@@ -34,7 +36,7 @@ table {%
 \addplot [very thick, color0, dash pattern=on 1pt off 3pt on 3pt off 3pt, forget plot]
 table {%
 0.01 5.76
-0.03 5.42333333333333
+%0.03 5.42333333333333
 0.05 4.58857142857143
 0.1 3.51095238095238
 0.15 2.78809523809524
@@ -43,7 +45,7 @@ table {%
 \addplot [color0]
 table {%
 0.01 5.76
-0.03 5.42333333333333
+%0.03 5.42333333333333
 0.05 4.32857142857143
 0.1 3.32619047619048
 0.15 2.60285714285714
@@ -53,7 +55,7 @@ table {%
 \addplot [very thick, green!50.1960784313725!black, dashed, forget plot]
 table {%
 0.01 5.76
-0.03 4.9
+%0.03 4.9
 0.05 4.12714285714286
 0.1 3.33523809523809
 0.15 3.06619047619048
@@ -62,7 +64,7 @@ table {%
 \addplot [very thick, green!50.1960784313725!black, dash pattern=on 1pt off 3pt on 3pt off 3pt, forget plot]
 table {%
 0.01 5.76
-0.03 4.42761904761905
+%0.03 4.42761904761905
 0.05 3.55666666666667
 0.1 2.9652380952381
 0.15 2.65809523809524
@@ -71,7 +73,7 @@ table {%
 \addplot [green!50.1960784313725!black]
 table {%
 0.01 5.76
-0.03 4.42761904761905
+%0.03 4.42761904761905
 0.05 3.55
 0.1 2.95666666666667
 0.15 2.65285714285714

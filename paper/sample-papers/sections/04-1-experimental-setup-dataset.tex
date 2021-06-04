@@ -1,0 +1,89 @@
+\section{Experimental setup}
+\label{sec:setup}
+
+%\textcolor{red}{Give names (formulas) to all rows in \cref{tab:datasets-and-results} to reference them in the text.}
+
+To perform experimental analysis, we used the implementation of conformal
+predictors available from
+\textit{nonconformist}\footnote{\url{https://github.com/donlnz/nonconformist}} Python library. 
+We followed the general experimental setup from the original paper by \citet{johansson2017model}.
+That is we used 10x10-fold cross-validation with 90\% of the data used for 
+training and validation of the model, and 10\% used for testing.
+The training dataset was further split into a proper training set and a 
+calibration set in proportion 4:1, i.e., 80\% of the training set was used for
+actual training of the classification model, and the rest 20\% were used 
+for calibration.
+All the results reported below are averaged over the 10x10 folds.
+
+In the original study, the authors used
+21 publicly available multi-class datasets from UCI repository~\cite{Dua:2019}.
+In this paper, we present not aggregated, but detailed results for every analyzed
+dataset. That is why we chose 9 representative datasets with different
+characteristics from the original list of 21 ones. 
+The general information about these datasets, such as the number of instances, attributes, and defined classes is given in the first section of \cref{tab:datasets-and-results}.
+
+\input{paper/sample-papers/sections/04-3-main-results-tab}
+
+The original study by \citet{johansson2017model} analyzed the performance of 
+conformal classifiers based on the ANN classification model.
+In this paper, we aim to further extend this analysis and use 8 different
+classification algorithms as baseline models: Support Vector Machine (SVM), Decision Tree (DT), $k$-Nearest Neighbours (KNN), AdaBoost (Ada), Gaussian Naive Bayes (GNB), Multilayer Perceptron (MPR), Random Forest (RF) and Quadratic Discriminant Analysis (QDA). We used implementations of these algorithms
+available from the  \textit{scikit-learn} Python library. In \cref{tab:algo-params},
+we summarize the input parameters of these algorithms unless the default values 
+are used.
+
+\begin{table}[htbp]
+ % The first argument is the label.
+ % The caption goes in the second argument, and the table contents
+ % go in the third argument.
+\floatconts
+  {tab:algo-params}%
+  {\caption{Input parameters of classification algorithms}}%
+  {
+\begin{tabular}{l|l}
+Algorithm & Input parameters                                               \\
+\hline
+SVM       & probability=True                                               \\
+DT        & min\_samples\_split=max(5,  5\% of proper training dataset) \\
+KNN       & n\_neighbors=5                                                 \\
+MPR       & alpha=1, max\_iter=1000                                        \\
+RF        & n\_estimators=10, min\_samples\_split=0                         
+\end{tabular}
+  }
+\end{table}
+
+Different classifiers perform differently on different datasets.
+We demonstrate this in the second section of \cref{tab:datasets-and-results}.
+To calculate the corresponding values, we used the same 10x10-fold cross-validation but without splitting the training set into a proper training set and a
+validation set.
+\textit{$b\_err$ range} from the first row of this section demonstrates the range of
+errors produced by all 8 classification algorithms in the baseline mode\footnote{
+In this text we use the \textit{baseline mode} to refer to the standard (non-conformal) prediction.
+}. We can 
+notice that some datasets are easier to classify, for example, the \verb|iris| dataset for which  the maximum error is 6\%. 
+At the same time, other datasets are more difficult, for example, \verb|wineW| for which none of the classifiers can produce error less than 45\%.
+The performance of classifiers is not uniformly distributed within the given ranges.
+This can be seen from the median of baseline error distribution, see row \textit{$b\_err$ median}.
+For example, for the  \verb|cars| dataset different classifiers result in errors ranging from 7\% to 96\%. However, the median value of 13 shows that half of them perform relatively well.
+
+%For our analysis we used 3 nonconformity functions: 1) inverse probability, \textit{IP} (also known as \textit{hinge}) defined by the following formula $\Delta \left[h \left( \vec{x_i}, y_i \right) \right] = 1 - \hat{P}_h\left(y_i | \vec{x_i} \right)$; 2) margin (\textit{M}) defined by equation $\Delta \left[h \left( \vec{x_i}, y_i \right) \right] = \max_{y \neq y_i} \hat{P}_h\left(y | \vec{x_i} \right) - \hat{P}_h\left(y_i | \vec{x_i} \right)$; 3) and the combination of \textit{inverse probability} and \textit{margin} as defined in \cref{sec:our-approach}.
+
+All experimental evaluations were performed for 5 different values of significance
+level $\epsilon \in \left\{ 0.01, 0.05, 0.1, 0.15, 0.20 \right\}$. For every 
+combination of dataset, baseline classification algorithm and $\epsilon$, we 
+calculated the values of $oneC$ and $avgC$ with 2 different nonconformity 
+functions (\textit{IP} and \textit{M}) and their combination \textit{IP\_M}.
+After that, the results were compared to see if any of the nonconformity 
+functions or their combination 
+results in a more efficient conformal predictor. 
+Due to the space limitations of this paper, we present 
+detailed results only for 4 datasets highlighted in bold in \cref{tab:datasets-and-results}. 
+However, experimental results for all datasets together with the 
+code used for the experimentation
+are available in the related git repository\footnote{
+\url{https://github.com/marharyta-aleksandrova/copa-2021-conformal-learning}
+}.
+
+%\citet{johansson2017model}
+
+%\citep{johansson2017model}

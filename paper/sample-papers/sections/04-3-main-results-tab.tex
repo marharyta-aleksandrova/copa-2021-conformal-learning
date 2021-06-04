@@ -1,0 +1,55 @@
+\begin{sidewaystable}[htbp]
+%\scriptsize
+\floatconts
+  {tab:datasets-and-results}
+  {\caption{Characteristics of the datasets and summarization of results}}
+  {
+\begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l}
+                             \multicolumn{3}{r|}{\textbf{Datasets} }                                & \textbf{iris} & \textit{user} & \textbf{glass} & \textit{cars} & \textbf{wave} & \textbf{balance} & \textit{wineR} & \textit{wineW} & \textit{yeast}            \\
+\hline
+\hline
+\hline
+\multirow{4}{*}{1} & \multirow{4}{*}{\rotatebox[origin=c]{90}{info}} & \# instances                    & 150           & 403           & 214            & 1728          & 5000          & 625              & 1599           & 4898           & 1484                      \\
+                            & & \# attributes                   & 4             & 5             & 9              & 6             & 21            & 4                & 11             & 11             & 8                         \\
+                            & & \# classes                      & 3             & 4             & 6              & 4             & 3             & 3                & 6              & 7              & 10                        \\
+                            & & balanced                        & Y             & mostly        & N              & N             & Y             & N                & N              & N              & N                         \\
+\hline
+\hline
+\hline
+\multirow{2}{*}{2} & \multicolumn{2}{l|}{$b\_err$ range, \%}                           & 2-6           & 5-32          & 24-92          & 7-96          & 13-25         & 3-21             & 38-50          & 45-58          & 40-87                     \\
+& \multicolumn{2}{l|}{$b\_err$ median, \%}                          & 4             & 7             & 48             & 13            & 17            & 10               & 45             & 53             & 44                        \\
+\hline
+\hline
+\hline
+\multirow{3}{*}{3} & \multirow{3}{*}{\rotatebox[origin=c]{90}{ $E\_oneC$}} & mean                      & 0.98          & 0.93          & 0.63           & 0.88          & 0.90          & 0.96             & 0.52           & 0.50           & 0.56                      \\
+                            & & mean-std                        & 0.00          & 0.00          & 0.02           & 0.00          & 0.00          & 0.00             & 0.03           & 0.02           & 0.02                      \\
+                            & & corr. $b\_acc$               & 0.92          & 0.98          & 0.69           & 0.93          & 0.92          & 0.80             & 0.27           & 0.78           & 0.97                      \\
+\hline
+\hline
+\hline
+\multirow{4}{*}{4}& \multirow{2}{*}{\rotatebox[origin=c]{90}{thres.}}      & $oneC$,\%                       & 5             & 15            & 75             & 47.5          & 25            & 67.5             & 72.5           & 65             & 77.5                      \\
+                            & & $avgC$,\%                       & 2.5           & 22.5          & 67.5           & 37.5          & 27.5          & 42.5             & 80             & 77.5           & 82.5                      \\\cline{2-12}
+%\hline
+&\multirow{2}{*}{\rotatebox[origin=c]{90}{stat.}}       & $oneC$,\%                       &               & 5             & 50             & 45            & 30            & 55               & 82.5           & 85             & 85                        \\
+                            & & $avgC$,\%                       &               & 17.5          & 37.5           & 45            & 47.5          & 50               & 82.5           & 77.5           & 77.5                      \\
+\hline
+\hline
+\hline
+\multirow{6}{*}{5} &\multirow{6}{*}{\rotatebox[origin=c]{90}{patterns}}    & \multirow{3}{*}{\textit{M} is the best} &               & {\scriptsize \textbf{KNN}}           & {\scriptsize \textbf{\textbf{KNN}},}        & {\scriptsize \textbf{\textbf{KNN}}}           & {\scriptsize Ada}         & {\scriptsize \textbf{\textbf{KNN}}, DT, RF,}    & {\scriptsize \textbf{\textbf{KNN}}}            & { \scriptsize \textbf{\textbf{KNN}}}            & {\scriptsize \textbf{\textbf{KNN}}(0.05, 0.1, 0.15),}     \\
+                             &&                                 &               &               & {\scriptsize DT}               &               & {\scriptsize (0.1, 
+                             0.15,}      & {\scriptsize GNP, MPR,}        & \scriptsize{(0.05, 0.1),}    & {\scriptsize (0.05, 0.1)}     & {\scriptsize DT(0.05), Ada(0.15,} \\
+                             &&                                 &               &               &                &               & {\scriptsize 0.20)}   & {\scriptsize Ada, QDA }         & {\scriptsize DT(0.05) }      &                & {\scriptsize  0.2), QDA(0.15, 0.2)}            \\\cline{3-12}
+                             && \textit{IP} is the best                      &               & {\scriptsize Ada(0.15)}     &                &               & {\scriptsize Ada(0.01)}     &                  &                &                &                           \\\cline{3-12}
+                             && \textit{IP\_M} is the best                   &               &               & {\scriptsize MPR}            & {\scriptsize RF}           & {\scriptsize RF }          &                  &                &                &                           \\\cline{3-12}
+                             && \textit{IP\_M} $>$ \textit{IP}               & Y             & Y             & Y              & Y             & Y             & Y                & Y              & Y              & Y\\    
+\hline
+\hline
+\hline
+%6 & \multicolumn{2}{l|}{credibility \& $b\_err$}                       & Y              & Y          %   &                & Y             & Y             & Y                &                &            %    &                           \\
+%\hline
+%\hline
+%\hline
+%                             7 & \multicolumn{2}{c|}{$b\_acc \uparrow \Rightarrow $ eff. $\uparrow$}                & ?             & ?             & ?              & ?             & ?             & ?                & ?              & ?              & ?\\
+\end{tabular}
+  }
+\end{sidewaystable}

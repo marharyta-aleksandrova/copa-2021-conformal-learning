@@ -1,0 +1,363 @@
+\section{Experimental results}
+\label{sec:experiments}
+
+\subsection{Validity}
+\label{sec:experiments:validity}
+
+We start with the analysis of \textit{validity}, that is first we check if 
+the produced conformal predictors indeed achieve the required error rate. 
+This property was demonstrated in previous works both for \textit{inverse probability} and \textit{margin}.
+It is also theoretically guaranteed for any nonconformity function, but not
+for a combination of those, like \textit{IP\_M}.
+In \cref{tab:validity} we demonstrate the empirical error rates averaged among all datasets. 
+As we can see, all conformal predictors are well-calibrated. 
+The validity of conformal predictor based on \textit{IP\_M} can be explained 
+by the fact, that we add \textit{margin}-based predictions to the 
+\textit{IP}-based model only in case when we are very confident about them. 
+Recall that the  significance level is set to $\epsilon / 2$ for this case, see
+\cref{sec:our-approach}. 
+Thereby, the probability to generate enough invalid predictions to surpass 
+the allowed error rate $\epsilon$ is very low.
+
+\begin{table}[htbp]
+ % The first argument is the label.
+ % The caption goes in the second argument, and the table contents
+ % go in the third argument.
+\floatconts
+  {tab:validity}%
+  {\caption{Emperical error rates}}%
+  {
+ %\begin{wraptable}{r}{8cm}
+\begin{tabular}{l|lllll}
+\multicolumn{1}{r}{\textbf{eps:}}   & \textbf{0.01} & \textbf{0.05} & \textbf{0.10} & \textbf{0.15} & \textbf{0.20} \\
+\hline
+\textit{IP}    & 0.01          & 0.05          & 0.09         & 0.14          & 0.19         \\
+\textit{IP\_M} & 0.01          & 0.05          & 0.10         & 0.15          & 0.19         \\
+\textit{M}     & 0.01          & 0.05          & 0.10         & 0.15          & 0.19        
+\end{tabular}
+%\end{wraptable}
+  }
+\end{table}
+
+
+%\begin{table}[htbp]
+ % The first argument is the label.
+ % The caption goes in the second argument, and the table contents
+ % go in the third argument.
+%\floatconts
+%  {tab:validity}%
+%  {\caption{Emperical error rates}}%
+%  {
+%\begin{tabular}{l|llllll}
+%\textbf{eps}   & \textbf{0.01} & \textbf{0.03} & \textbf{0.05} & \textbf{0.10} & \textbf{0.15} & \textbf{0.20} \\
+%\hline
+%\textit{IP}    & 0.01          & 0.03          & 0.05          & 0.09         & 0.14          & 0.19         \\
+%\textit{IP\_M} & 0.01          & 0.03          & 0.05          & 0.10         & 0.15          & 0.19         \\
+%\textit{M}     & 0.01          & 0.03          & 0.05          & 0.10         & 0.15          & 0.19        
+%\end{tabular}
+%  }
+%\end{table}
+
+\subsection{Informativeness of $oneC$}
+\label{sec:experiments:eff-oneC}
+
+In \cref{sec:our-approach}, we discussed the issue that can happen with $oneC$ 
+metric. Indeed, if a large portion of predicted singletons does not contain the 
+true label, then this metric can be misleading.
+We calculated the ratio of the number of singleton predictions that contain 
+the true label to the overall number of singleton predictors for different
+setups and algorithms. We denote this value as $E\_oneC$ from \textit{effective $oneC$}. The corresponding results are presented in 
+section 3 of \cref{tab:datasets-and-results}.
+
+%First, we calculated the ratio of the number of correct singleton predictors to the total number of singleton predictors produced by a conformal classifier. 
+The first row of this section shows the averaged value of $E\_oneC$ over all 5
+values of $\epsilon$ and 3 nonconformity functions.
+We can notice that this value is very different for different datasets ranging
+from 0.98 for \verb|iris| to only 0.50 for \verb|wineW|. 
+This means that for \verb|wineW| on average half of the produced singleton 
+predictions do not contain the true label. In real applications, this
+prediction can be more confusing than a prediction with multiple labels.
+
+We can notice that there is a certain correlation between the mean value of 
+$E\_oneC$ and the difficulty of the dataset for the baseline classifiers 
+($b\_err$). 
+To analyze this relationship, we calculated the value of correlation between 
+the corresponding characteristics.
+The results are presented in the third row \textit{corr. $b\_acc$}.
+We can see that for 5 of 9 datasets (56\%) the correlation is above 0.9. 
+This holds for \verb|iris|, \verb|user|, \verb|cars|, \verb|wave|, and \verb|yeast| datasets.
+For 2 more datasets (\verb|balance| and \verb|wineW|), the correlation coefficient is approximately 0.8.
+For the \verb|glass| dataset, it is equal to 0.69, and only for \verb|wineR| the correlation is as low as 0.27.
+These results show a strong relationship between the baseline error of the underlying classification model and the correctness of singleton predictions.
+%It means that for a well performing classifier, we can expect a large
+%portion of singleton predictions to be correct.
+%However, in case of less well performing baseline classifier, only a half of %the resulting singleton prediction might contain the true label.
+
+Finally, to check if $E\_oneC$ depends on the chosen nonconformity function, we averaged the results separately for different non-conformity functions and then calculated the standard deviation of the resulting three values.
+The corresponding results are presented in the second row \textit{mean-std}.
+We notice that \textit{mean-std} is very low for all datasets.
+This indicates that $eff\_oneC$ does not depend on the choice of nonconformity function.
+
+\subsection{Efficiency of different nonconformity functions}
+\label{sec:experiments:efficiency}
+
+In this section, we study the relationship between different nonconformity functions and the effectiveness of the resulting conformal predictors. 
+For every combination of a dataset, a baseline classifier, and a value of $\epsilon$,
+we calculate the values of $oneC$ and $avgC$. For visual analysis, the corresponding results
+are plotted in figures like \cref{fig:iris,fig:glass}. Such figures contain information about
+the distribution of instances between classes (plots \textit{a}), the baseline
+error rate of all classification algorithms $b\_err$ (plots \textit{b}), and the 
+corresponding values of the efficiency metrics (plots from \textit{c} to \textit{j}).
+The latter group of plots contains three lines corresponding to \textit{margin} (dashed line),
+\textit{inverse probability} (dash and dot line) and their combination \textit{IP\_M}
+(thin solid line).
+
+Further, we evaluate how significant are the differences between different nonconformity 
+functions. The corresponding results are presented in tables like \cref{tab:glass}.
+Here, for every baseline classifier and value of $\epsilon$, we present a comparison matrix.
+A value in the matrix shows if the row setup is better (indicated with $+$) or
+worse (indicated with $-$) than the column setup. The star indicates if the 
+detected difference is statistically significant\footnote{Statistical significance was 
+estimated using Student's t-test with $\alpha = 0.05$.}.
+To avoid too small differences, we put a sign into the matrix only if the corresponding
+difference is above the threshold of 2\%\footnote{For 100\% we take the value of 1 
+for $oneC$ and the total number of classes for $avgC$. These are the maximum values of
+these two metrics.} or it is statistically significant.
+For example, from \cref{tab:glass} we can see that \textit{margin} results in better values of $oneC$ than
+\textit{IP} and \textit{IP\_M} for SVM with $\epsilon=0.05$.
+These results are also statistically significant, as indicated by a *.
+At the same time, for $\epsilon=0.1$ \textit{margin} improves the results of 
+\textit{IP\_M} by at least 2\%.
+However, this difference is not statistically significant.
+Section 6 of \cref{tab:datasets-and-results} shows the fraction of setups, for which we can observe  a
+difference between the performance of conformal classifiers with different nonconformity functions 
+either by exceeding the threshold of 2\% (\textit{thres.}) or observing statistical significance (\textit{stat.}). 
+These values are calculated as follows. For every dataset, we have 40 setups (5 values of $\epsilon$ x
+8 baseline classifiers). Each such setup corresponds to one matrix for $oneC$ and one 
+matrix for $avgC$ in tables like \cref{tab:glass}. 
+We calculate how many of these matrices either have at least one $+$ or $-$, or have at least one
+statistically significant result.
+After that, the calculated number is divided over 40.
+%We provide detailed analysis of the results for those datasets in \cref{tab:datasets-and-results} that are highlighted in bold. 
+
+
+Using the information provided in figures like \cref{fig:glass} and tables like \cref{tab:glass},
+we can analyze the efficiency of conformal classifiers for different nonconformity functions
+and identify which nonconformity functions perform better.
+The corresponding findings are summarized in section 4 of \cref{tab:datasets-and-results}.
+This section shows the deviations from the pattern originally observed by \cite{johansson2017model}.
+In our experiments we observed the following 3 deviations:
+1) \textbf{\textit{M} is the best}: \textit{margin} can produce both higher values of $oneC$ and lower values of $avgC$, that is \textit{margin} is the best choice of nonconformity function;
+2) \textbf{\textit{IP} is the best}: \textit{inverse probability} is the best choice of
+nonconformity function;
+3) \textbf{\textit{IP\_M} is the best}: the combination of \textit{M} and \textit{IP} produces 
+the best results in terms of both efficiency metrics.
+Additionally, our experiments show that \textit{IP\_M} never performs worse than \textit{IP} 
+(\textit{IP\_M} $>$ \textit{IP}).
+Note also, that we never observed the inverse pattern, that is \textit{inverse probability} resulting 
+in higher values of $oneC$ and \textit{margin} resulting in lower values of $avgC$ at the same time. 
+In the rest of this section, we demonstrate our main findings on the examples of 4 datasets
+highlighted in bold in \cref{tab:datasets-and-results}. The general conclusions are discussed
+in \cref{sec:experiments:summary}.
+
+
+
+%\subsubsection{iris}
+
+%Let us start the analysis for the first dataset - . 
+\textbf{IRIS}. The results for \verb|iris| dataset are presented in \cref{fig:iris}. 
+As we can see from the plots comparing $oneC$ and $avgC$, there is almost no difference
+and all 3 nonconformity functions produce the same results.
+This is also reflected in section 4 of \cref{tab:datasets-and-results}.
+Only for 5\% of setups we can observe a difference in terms of $oneC$, see performance of RF in \cref{fig:iris:oneC-RF-QDA}.
+The difference in $avgC$ observed even less often, only in 2.5\% of setups, see results for GNP in \cref{fig:iris:avgC-GNB-MPR}. 
+Statistically significant differences are never observed.
+This means that the table with the significance of results like \cref{tab:glass} for this dataset is
+almost empty. That is why we do not present it in the paper.
+As expected, not many patterns can be observed in this case. 
+The only pattern that we observe, is \textit{IP\_M} $>$ \textit{IP}.
+Note, that this dataset is perfectly balanced, see \cref{fig:iris:dist-class} and all classifiers have very good performance with maximum error not exceeding 6\%, see \cref{tab:datasets-and-results} and \cref{fig:iris:baseline-error}.
+We can also notice that there is a relationship between the baseline error of the classifier and the 
+efficiency of the resulting conformal predictor: better classifiers tend to produce conformal 
+predictors of better quality.
+The 3 worst baseline predictors DT, Ada, and RF also produce conformal predictors with lower values of $oneC$, see \cref{fig:iris:oneC-SVM-DT,fig:iris:oneC-KNN-Ada,fig:iris:oneC-RF-QDA} and larger values of $avgC$, see \cref{fig:iris:avgC-SVM-DT,fig:iris:avgC-SVM-DT,fig:iris:avgC-RF-QDA}.
+
+
+\input{paper/sample-papers/sections/4-iris-data/plots}
+
+%\subsubsection{glass}
+
+\textbf{GLASS}.
+Next, we analyze the results for \verb|glass| dataset presented in \cref{fig:glass} and 
+\cref{tab:glass}. This dataset is unbalanced, see \cref{fig:glass:dist-class} and 
+different classifiers have different performance with baseline error ranging from 24\% for RF to 92\%
+for QDA, see \cref{fig:glass:baseline-error}. As it was observed for \verb|iris| dataset, those 
+classifiers that perform better in the baseline scenario also tend to produce more efficient 
+conformal predictors.
+For example, see the results for RF in \cref{fig:glass:oneC-RF-QDA,fig:glass:avgC-RF-QDA}, and the 
+results for KNN in \cref{fig:glass:oneC-KNN-Ada,fig:glass:avgC-KNN-Ada}.
+At the same time, classifiers that perform badly in the baseline scenario produce conformal 
+predictors of low quality, see results for QDA in \cref{fig:glass:oneC-RF-QDA,fig:glass:avgC-RF-QDA}.
+There are also exceptions, but they are less numerous. 
+For example, for this dataset the baseline performance of the DT classifier is good ($b\_err \approx 
+30\%$), however, the resulting conformal classifier is less efficient than the one based on SVM with 
+$b\_err > 60\%$.
+For this dataset, we can also observe a clear difference in performance depending on which 
+nonconformity functions is used.
+This is summarized in \cref{tab:glass}. 
+Analyzing the results presented in this table, we can observe the following patterns.
+1) For KNN and DT-based conformal predictors \textit{margin} is the best choice of nonconformity function.
+Indeed, this is reflected in \cref{fig:glass:oneC-KNN-Ada,fig:glass:oneC-SVM-DT} (\textit{margin} 
+results in higher values of $oneC$) and  \cref{fig:glass:avgC-KNN-Ada,fig:glass:avgC-SVM-DT} 
+(\textit{margin} also results in lower values of $avgC$).
+This pattern is also shown in \cref{tab:glass} in comparison matrices corresponding to KNN and DT algorithms. 
+We can see that in all comparison matrices, there is a $+$ in rows corresponding to \textit{margin}
+indicating that it outperforms both \textit{IP} and \textit{IP\_M},
+except $avgC$ for KNN with $\epsilon=0.2$.
+2) For MPR \textit{IP\_M} is the best choice of nonconformity function. 
+This is reflected in the corresponding comparison matrices of \cref{tab:glass}, from which we can see
+that \textit{IP\_M} results in higher values of $oneC$ and lower values of $avgC$ at the same time.
+This is also visible in \cref{fig:glass:oneC-GNB-MPR,fig:glass:avgC-GNB-MPR}.
+3) Finally, we never observe \textit{IP\_M} being outperformed by \textit{IP}. In the inverse direction,
+however, \textit{IP\_M} does improve the results of \textit{IP}.
+For example, for SVM with $\epsilon=0.05$ or $\epsilon=0.1$ \textit{IP\_M} allows to achieve better 
+values of $oneC$ and this improvement is also statistically significant.
+\input{paper/sample-papers/sections/3-glass-data/plots}
+\input{paper/sample-papers/sections/3-glass-data/table_threshold}
+
+\textbf{WAVE.}
+The results for \verb|wave| dataset are presented in \cref{fig:wave} and \cref{tab:wave}.
+This dataset is balanced, see \cref{fig:wave:baseline-error}, and overall performance of classifies 
+is quite good, see \cref{fig:wave:baseline-error}. There is only one classifier, DT, wich results in 
+$b\_err > 20\%$. 
+As it was also noted for \verb|iris|, when classifiers have good baseline performance, the 
+difference between different nonconformity functions diminished.
+This is reflected in the reduction of values in section 4 of \cref{tab:datasets-and-results} (25\%, 
+27.5\%, 30\%, and 47.5\%) as compared to the corresponding values for \verb|glass| dataset 
+(75\%, 67.5\%, 50\%, and 37.5\%).
+We can observe visual differences in \cref{fig:wave} only for DT, Ada, GNB, and RF.
+No difference is observed for KNN, however, despite it having a comparable value of $b\_err$. 
+For this dataset, we can also see that \textit{margin} results in best performance for $\epsilon \in \{ 0.1, 0.15, 0.2\}$ when Ada classifier is used.
+This improvement is also statistically significant, see \cref{tab:wave}. 
+In the case of $\epsilon = 0.01$ however, the best performance is achieved by \textit{IP} nonconformity 
+function, and this result is also statistically significant.
+Further, \textit{IP\_M} is the best choice for RF classifier with statistical significance of the improvement in most of settings.
+
+\input{paper/sample-papers/sections/6-wave-data/plots}
+\input{paper/sample-papers/sections/6-wave-data/table_threshold}
+
+
+
+\textbf{BALANCE.}
+The case of \verb|balance| dataset is very interesting, because, as we will see, for most of the 
+classification models \textit{margin} is always the best choice of nonconformity function.
+As reflected in \cref{tab:balance} and supported by \cref{fig:balance}, these differences
+is mostly statistically significant.
+The only cases for which the original pattern holds are SVM with all values of $\epsilon$ 
+and QDA with $\epsilon=0.05$. For this dataset, we also observe differences between different
+nonconformity functions despite the relatively good performance of many classifiers. 
+%This was opposite for \textit{wave} dataset. Maybe it is related to the fact that margin is best choice here.
+
+\input{paper/sample-papers/sections/1-balance-data/plots}
+\input{paper/sample-papers/sections/1-balance-data/table_threshold}
+
+%\textbf{YEAST.}
+%The last dataset that we will consider is \textit{yeast} with results presented in \cref{fig:yeast} and \cref{tab:yeast}.
+%This dataset that has the largest number of classes (10) and it is highly unbalanced, see \
+%cref{fig:yeast:dist-class}. 
+%This is one of the most difficult datasets in the baseline setting with $b\_err$ ranging from 40\% for SVM and MPR to 87\% for QDA, see \cref{fig:yeast:baseline-error}.
+%For this dataset, we again observe cases when \textit{margin} outperforms all other nonconformity function: KNN with $\epsilon \in \{ 0.05, 0.1, 0.15 \}$, DT with $\epsilon=0.05$, Ada with $\epsilon \in \{ 0.15, 0.2 \}$ and QDA with $\epsilon \in \{ 0.15, 0.2 \}$.
+%For the majority of these cases, the difference is statistically significant, see \cref{tab:yeast}.
+%For this dataset, we can also observe that \textit{IP\_M} allows to significantly improve the values
+%of $oneC$ as compared to \textit{inverse probability} nonconformity function.
+%It also usually improves the value of $avgC$, being the best choice in terms of this unless 
+%\textit{margin} provides better results. For example, see results for SVM (\cref{fig:yeast:oneC-SVM-DT,fig:yeast:avgC-SVM-DT}), GNP and MPR (\cref{fig:yeast:oneC-GNB-MPR,fig:yeast:avgC-GNB-MPR}), and RF (\cref{fig:yeast:oneC-RF-QDA,fig:yeast:avgC-RF-QDA}).  
+
+%\input{paper/sample-papers/sections/9-yeast-data/plots}
+%\input{paper/sample-papers/sections/9-yeast-data/table_threshold}
+
+\subsection{Summary of results}
+\label{sec:experiments:summary}
+
+In this subsection we summarize the findings from our experimental results shown in \cref{tab:datasets-and-results}.
+
+    %\textbf{\textit{Margin} can be the best non-conformity function}. 
+    As we saw, \textbf{\textit{margin} can be the best choice of nonconformity function} for some datasets (\verb|balance| dataset) or some algorithms. 
+    An interesting fact is that for almost all datasets KNN-based conformal predictor works best with \textit{margin} in terms of both $oneC$ and $avgC$.
+    %For \textit{yeast} dataset this is also observed for 3 of 4 values of $\epsilon$ which results in different values of efficiency metrics, see \cref{tab:yeast}. 
+    This pattern was not observed only for \verb|iris| and \verb|wave| datasets as all 
+    nonconfomity functions result in the same values of $oneC$ and $avgC$ in case KNN is used. This observation
+    suggests that some classification algorithms and datasets might \textit{prefer} particular
+    nonconformity functions.
+    
+     \textbf{\textit{Inverse probability} is almost never the best nonconformity function}.
+    We observed that \textit{margin} can results in the best conformal classifiers in terms of both efficiency metrics. 
+    However, it almost never happens with \textit{inverse probability} function.
+    In our experiments, this was observed only for the Ada classifier for \verb|user| dataset with $\epsilon = 0.15$ and \verb|wave| dataset with $\epsilon = 0.01$.
+    
+     \textbf{\textit{IP\_M} improves \textit{IP}}. In none of our experiments, we  observed \textit{IP\_M} being outperformed by \textit{IP}.
+    \textit{IP\_M} improves $oneC$ and $avgC$ as compared to \textit{IP} or produces the same values of these metrics.
+    This is expected, as \textit{IP\_M} is basically an \textit{IP} measure with some non-singleton predictions replaced with singletons.
+    This replacement naturally increases $oneC$ and decreases $avgC$.
+    The fact that \textit{IP\_M} also results in valid predictions respecting the imposed value of maximum error rate $\epsilon$, as was demonstrated in \cref{tab:validity}, proves the utility of this approach.
+    Additionally, in some cases \textit{IP\_M} produces better results than both \textit{margin} and \textit{inverse probability} in terms of both efficiency metrics.
+    This was observed for \verb|glass| dataset with MPR, and for \verb|cars| and \textit{wave} datasets with RF.
+    
+    \textbf{The baseline pattern holds for the majority of the cases}. 
+    In our experimental results, we discussed only the cases which deviate from the baseline pattern.
+    As we saw, such cases do exist, and a
+    particular nonconformity function produces the best values of both metrics for some baseline classifiers or some datasets. 
+    However, in most of the cases when the difference between nonconformity functions is observed,
+    \textit{margin} results in better values of $oneC$ and \textit{inverse probability} results in 
+    better values of $avgC$.
+    Also, we never observed an inverse pattern, that is \textit{inverse probability} resulting in 
+    higher values of $oneC$ and \textit{margin} resulting in lower values of $avgC$ at the same 
+    time.
+    This supports the main finding of the original paper by \citet{johansson2017model}.
+    
+    \textbf{$oneC$ is not always useful.}
+    As was discussed in \cref{sec:experiments:eff-oneC}, the metric $oneC$ can be misleading.
+    For some of the datasets, only half of the singleton predictions contain the true label.
+    In such cases, the minimization of $avgC$ is preferred over the maximization of $oneC$.
+    We also showed that the fraction of correct singleton predictions strongly correlates with the 
+    performance of the chosen classifier in the baseline scenario.
+    It means that by analyzing this performance, we can estimate how accurate the singleton 
+    predictors will be and we can decide which efficiency metric should be considered more important.
+    Also, it was shown that the choice of nonconformity function has little impact on 
+    the fraction of correct singleton predictions $E\_oneC$.
+    
+    \textbf{The baseline performance of the chosen classifier impacts the efficiency of the conformal predictor}.
+        In our experiments, we observed that if the performance of the baseline classifier is good, then the choice of nonconformity function tends to have no impact on the efficiency of the resulting conformal classifier. This is the case for \verb|iris| and \verb|wave| datasets.
+        In the case of \verb|balance| dataset, this relationship is less prominent and \textit{margin} always outperforms \textit{IP} and \textit{IP\_M}.
+        This can be related to the fact that this dataset is unbalanced as opposed to the two other datasets.
+        In this case, the classifier can have problems generating predictions for the minority classes. This will not be reflected in the baseline error due to the little number of instances in these classes.
+        The baseline performance of the underlying classification model also has a direct impact on the efficiency of the resulting conformal classifier. 
+        Except for some cases, soon after the value of $\epsilon$ reaches the value of $b\_err$,
+        metric $oneC$ reaches its maximum and starts decreasing.
+        At the same time, the value of $avgC$ reaches 1 and further decreases,
+        see, for example, results for \verb|iris| dataset presented in \cref{fig:iris}.
+        This observation makes sense.
+        When $\epsilon > b\_err$, the conformal classifier is allowed to make more mistakes than it does in the baseline scenario. 
+        This can be only achieved by generating empty predictions.
+        For such values of $\epsilon$, more and more predictions will be singletons or empty what results in the decrease of $oneC$ and $avgC$ being below 1.
+
+
+
+
+
+%\input{sections/04-04-iris}
+%\input{sections/04-05-user}
+
+
+%\input{sections/04-03-glass}
+%\input{sections/04-02-cars}
+%\input{sections/04-06-wave}
+
+
+%\input{sections/04-01-balance}
+%\input{sections/04-07-wineR}
+%\input{sections/04-08-wineW}
+%\input{sections/04-09-yeast}
+
+
+

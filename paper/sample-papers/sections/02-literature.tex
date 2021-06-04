@@ -1,0 +1,66 @@
+\section{Related works}
+\label{sec:literature}
+
+Conformal prediction is a relatively new paradigm developed at the beginning of
+2000, see \cite{linusson2021nonconformity} for an overview. It was originally developed for 
+transductive setting \citep{vovk2013transductive}. The latter is efficient in terms of 
+data usage but is also computationally expensive. Recent studies, including
+the current one, focus on \textit{Inductive Conformal Prediction} 
+(\textit{ICP})~\citep{papadopoulos2008inductive}. \textit{ICP} trains the 
+learning model only once, however a part of the training dataset should be put
+aside for model calibration using a predefined nonconformity function.
+
+There are two groups of nonconformity functions: \textit{model-agnostic} and 
+\textit{model-dependent}. Model-dependent nonconformity functions are defined
+based on the underlying prediction model. Such functions can depend on the
+distance to the separating hyperplane in SVM~\citep{balasubramanian2009support}, 
+or the distance between instances in KNN classifier~\citep{proedrou2002transductive}.
+These nonconformity functions are model-specific, thereby, one can not draw 
+generalized conclusions about their behaviour. In a recent study by 
+\cite{johansson2017model} it was shown that model-agnostic nonconformity 
+functions do have some general characteristics. \textit{Inverse probability} 
+nonconformity function, also knows as \textit{hinge}, is defined by the
+equation $\Delta \left[ h (\vec{x_i}), y_i \right] = 1 - \hat{P}_h(y_i | \vec{x_i})$, where 
+$\vec{x_i}$ is the analyzed data instance, $y_i$ is a tentative class label, and
+$\hat{P}_h(y_i | \vec{x_i})$ is the probability assigned to this label given the 
+instance $\vec{x_i}$ by the underlying classifier $h$. It was shown that 
+conformal classifiers based on this metric tend to generate prediction regions
+of lower average length ($avgC$). At the same time, the \textit{margin} 
+nonconformity function results in a larger fraction of singleton predictions
+($oneC$). The latter is defined by the following formula 
+$\Delta ( h \left[\vec{x_i}), y_i\right] = \max_{y \neq y_i}\hat{P}_h(y | \vec{x_i}) - \hat{P}_h(y_i | \vec{x_i})$,
+and it measures how different is the probability of the label $y_i$ from 
+another most probable class label. The experimental evaluations in \citep{johansson2017model}, 
+however, were performed for a limited number of underlying classification models:
+ANN and ensemble of bagged ANNs. To the best of our knowledge, there are no
+research works dedicated to the validity analysis of the discovered pattern in the case
+of other classification algorithms. To our opinion, this piece of research is
+missing to draw global calculations about the characteristics of these 
+nonconformity functions.
+
+Combining characteristics of both \textit{margin} and \textit{inverse
+probability} nonconformity functions is a tempting idea. 
+In recent years many authors dedicated
+their efforts to understand how one can generate more efficient conformal
+predictions through a combination of several conformal predictors.
+\cite{yang2021finite} and \cite{toccaceli2019combination} studied how to aggregate
+conformal 
+predictions based on different training algorithms. Various strategies were 
+proposed for such combination: via $p$-values~\citep{toccaceli2017combination},
+a combination of monotonic conformity scores~\citep{gauraha2018synergy},
+majority voting~\citep{cherubin2019majority},  
+out-of-bag calibration~\citep{linusson2020efficient}, or via 
+established result in Classical Statistical Hypothesis
+Testing~\citep{toccaceli2019conformal}.
+The challenge of every combination of conformal predictors is to retain \textit{validity}, that is 
+to achieve the empirical error rate not exceeding the predefined value $\epsilon$.
+This property is usually demonstrated experimentally and some authors provide 
+guidelines on which values of significance levels should be used for individual
+conformal algorithms to achieve the desired validity of the resulting combination.
+As opposed to these general approaches, in \cref{sec:our-approach} we
+propose a procedure that is based on the 
+properties of \textit{margin} and \textit{inverse probability}. We show that this approach
+allows combining their characteristics, higher $oneC$ and
+lower $avgC$, and retains the validity at the same time.
+
+
