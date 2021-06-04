@@ -1,0 +1,27 @@
+oneC above 0.02 : 5.0
+avgC above 0.02 : 2.5
+
+eff_oneC mean mean : 0.98025
+eff_oneC mean std : 0.00038
+eff_oneC corr with accuracy : 0.919
+
+is_main_pattern_oneC
+	{
+	'RF': [0.05, 0.1]
+	}
+is_main_pattern_avgC
+	{
+	'Ada': [0.05]
+	}
+is_margin_best
+	{
+	'RF': [0.05, 0.1]
+	}
+is_ip_best
+	{
+	'Ada': [0.05]
+	}
+is_margin_better_ip
+	{
+	'RF': [0.05, 0.1]
+	}

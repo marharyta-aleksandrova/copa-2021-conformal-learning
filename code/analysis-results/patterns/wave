@@ -1,0 +1,46 @@
+oneC above 0.02 : 25.0
+avgC above 0.02 : 27.500000000000004
+
+eff_oneC mean mean : 0.89868
+eff_oneC mean std : 0.00168
+eff_oneC corr with accuracy : 0.918
+
+is_main_pattern
+	{
+	'DT': [0.05, 0.1]
+	}
+is_main_pattern_oneC
+	{
+	'Ada': [0.05],
+	'RF': [0.15, 0.2]
+	}
+is_main_pattern_avgC
+	{
+	'SVM': [0.01, 0.05],
+	'GNB': [0.01, 0.05, 0.1],
+	'MPR': [0.01],
+	'RF': [0.01, 0.05],
+	'QDA': [0.01]
+	}
+is_margin_best
+	{
+	'Ada': [0.05, 0.1, 0.15, 0.2],
+	'RF': [0.2]
+	}
+is_ip_best
+	{
+	'SVM': [0.01, 0.05],
+	'Ada': [0.01],
+	'GNB': [0.01, 0.05, 0.1],
+	'MPR': [0.01],
+	'QDA': [0.01]
+	}
+is_ip_m_best
+	{
+	'RF': [0.01, 0.05, 0.1]
+	}
+is_margin_better_ip
+	{
+	'Ada': [0.05, 0.1, 0.15, 0.2],
+	'RF': [0.15, 0.2]
+	}

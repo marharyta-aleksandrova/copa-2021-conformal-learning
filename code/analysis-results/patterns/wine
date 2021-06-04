@@ -1,0 +1,23 @@
+oneC above 0.02 : 37.5
+avgC above 0.02 : 40.0
+
+eff_oneC mean mean : 0.03848
+eff_oneC mean std : 0.05224
+eff_oneC corr with accuracy : -0.905
+
+is_margin_best
+	{
+	'SVM': [0.05, 0.1, 0.15, 0.2],
+	'Ada': [0.05, 0.1, 0.15, 0.2],
+	'GNB': [0.1, 0.15, 0.2],
+	'MPR': [0.05, 0.1, 0.15, 0.2],
+	'QDA': [0.15, 0.2]
+	}
+is_margin_better_ip
+	{
+	'SVM': [0.05, 0.1, 0.15, 0.2],
+	'Ada': [0.05, 0.1, 0.15, 0.2],
+	'GNB': [0.1, 0.15, 0.2],
+	'MPR': [0.05, 0.1, 0.15, 0.2],
+	'QDA': [0.15, 0.2]
+	}
