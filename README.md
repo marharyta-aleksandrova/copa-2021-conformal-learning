@@ -10,6 +10,8 @@ The repository includes:
 2. `code`  folder - all code in Python used to perform the
     experiments, analyze the results and prepare plots/tables for 
     the paper.
+3. `Detailed_results_for_real_datasets.pdf` - plots and tables for
+    all 9 real datasets
 
 The folder `code` includes the following:
 1. Folder `datasets` - all datasets used to perform experiments;
