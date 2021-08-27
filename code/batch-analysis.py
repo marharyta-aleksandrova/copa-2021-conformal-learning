@@ -11,11 +11,11 @@ def write_message(message, log_file):
 
 
 def run(path_to_res, seed=1, func=analysis_with_3_func):
-    datasets_load = {
-        'balance': load_balance, 'cars': load_cars, 'ecoli': load_ecoli, 'glass': load_glass,
-        'iris': load_iris, 'user': load_user, 'wave': load_wave, 'wine': load_wine,
-        'wine_Red': load_wine_red, 'wine_White': load_wine_white, 'yeast': load_yeast, 'zoo': load_zoo
-    }
+    #datasets_load = {
+    #    'balance': load_balance, 'cars': load_cars, 'ecoli': load_ecoli, 'glass': load_glass,
+    #    'iris': load_iris, 'user': load_user, 'wave': load_wave, 'wine': load_wine,
+    #    'wine_Red': load_wine_red, 'wine_White': load_wine_white, 'yeast': load_yeast, 'zoo': load_zoo
+    # }
     data_order = [
         'balance',
         'glass',
@@ -29,6 +29,17 @@ def run(path_to_res, seed=1, func=analysis_with_3_func):
         # 'ecoli',
         # 'wave',
         # 'wine',
+        # 'steel',
+        # 'tae',
+        # 'cmc',
+        # 'heat',
+        # 'cool',
+        # 'whole',
+        'gen_nor_0.2',
+        'gen_nor_0.4',
+        'gen_nor_0.6',
+        'gen_nor_0.8',
+        'gen_nor_1',
     ]
 
     with open(path_to_res + 'log/A_info_{}.log'.format(seed), 'w') as log_file:
@@ -37,7 +48,7 @@ def run(path_to_res, seed=1, func=analysis_with_3_func):
 
         for i in range(0, len(data_order)):
             dataset_name = data_order[i]
-            data = datasets_load[dataset_name]()
+            data = datasets_load[dataset_name]
             data_df = pd.DataFrame(data['data'])
             data_df['target'] = data['target']
             tmp_df = data_df.groupby('target').count()[0]

@@ -19,9 +19,14 @@ def get_baseline_err(algo_arr, results, eps_err):
 def plot_baseline_err(algo_arr, results, eps_err):
     baseline_err_arr = []
     for algo in algo_arr:
-        df = results[algo]
-        baseline_err_arr.append(df[df['eps'] == eps_err[0]]['origin_err'].mean())
+        try:
+            df = results[algo]
+            baseline_err_arr.append(df[df['eps'] == eps_err[0]]['origin_err'].mean())
+        except:
+            baseline_err_arr.append(np.nan)
 
+    print('Mean = {}'.format(np.array(baseline_err_arr).mean()))
+    # print('Median = {}'.format(np.array(baseline_err_arr).median()))
     plt.bar(algo_arr, baseline_err_arr, color=colours)
     plt.grid(True)
     plt.title('Baseline error')
@@ -42,35 +47,41 @@ def plot_metric(results, col_str, nc_func_arr, algo_arr, eps_err, colours, ls_ar
     min_val = np.inf
     max_val = 0
     for algo in algo_arr:
-        new_min = np.min(np.min(results[algo][['eps', 'marg{}'.format(col_str),
-                                               'inv{}'.format(col_str),
-                                               'inv_m{}'.format(col_str)]].groupby('eps').mean()))
-        new_max = np.max(np.max(results[algo][['eps', 'marg{}'.format(col_str),
-                                               'inv{}'.format(col_str),
-                                               'inv_m{}'.format(col_str)]].groupby('eps').mean()))
-        if new_min < min_val:
-            min_val = new_min
-        if new_max > max_val:
-            max_val = new_max
+        try:
+            new_min = np.min(np.min(results[algo][['eps', 'marg{}'.format(col_str),
+                                                   'inv{}'.format(col_str),
+                                                   'inv_m{}'.format(col_str)]].groupby('eps').mean()))
+            new_max = np.max(np.max(results[algo][['eps', 'marg{}'.format(col_str),
+                                                   'inv{}'.format(col_str),
+                                                   'inv_m{}'.format(col_str)]].groupby('eps').mean()))
+            if new_min < min_val:
+                min_val = new_min
+            if new_max > max_val:
+                max_val = new_max
+        except:
+            pass
 
     for k in [0, 2, 4, 6]:
         idx0, idx1 = index_dic[k]
         for i in range(k, k + 2):
             algo = algo_arr[i]
-            metric_df = results[algo][['eps', 'marg{}'.format(col_str),
-                                       'inv{}'.format(col_str),
-                                       'inv_m{}'.format(col_str)]].groupby('eps').mean()
+            try:
+                metric_df = results[algo][['eps', 'marg{}'.format(col_str),
+                                           'inv{}'.format(col_str),
+                                           'inv_m{}'.format(col_str)]].groupby('eps').mean()
 
-            for nc_idx in range(0, len(nc_func_arr)):
-                # print(nc_idx)
-                if nc_idx == 2:
-                    label_str = algo
-                else:
-                    label_str = '_nolegend_'
-                ax[idx0, idx1].plot(eps_err, metric_df[nc_func_arr[nc_idx] + col_str],
-                                    c=colours[i], ls=ls_arr[nc_idx], lw=lw_arr[nc_idx],
-                                    label=label_str
-                                    )
+                for nc_idx in range(0, len(nc_func_arr)):
+                    # print(nc_idx)
+                    if nc_idx == 2:
+                        label_str = algo
+                    else:
+                        label_str = '_nolegend_'
+                    ax[idx0, idx1].plot(eps_err, metric_df[nc_func_arr[nc_idx] + col_str],
+                                        c=colours[i], ls=ls_arr[nc_idx], lw=lw_arr[nc_idx],
+                                        label=label_str
+                                        )
+            except:
+                pass
             pass
         ax[idx0, idx1].set_xticks(eps_err)
         ax[idx0, idx1].set_ylim((min_val * 0.9, max_val * 1.1))
@@ -477,8 +488,23 @@ def mean_threshold_test_for_algo(algo, results, col, n_classes, threshold):
 
 # constants
 path = 'analysis-results/'
-data_order = ['balance', 'cars', 'ecoli', 'glass', 'iris', 'user', 'wave', 'wine',
-              'wine_Red', 'wine_White', 'yeast', 'zoo']
+data_order = ['balance',
+              'cars',
+              'ecoli',
+              'glass',
+              'iris',
+              'user',
+              'wave',
+              'wine',
+              'wine_Red',
+              'wine_White',
+              'yeast',
+              'gen_nor_0.2',
+              'gen_nor_0.4',
+              'gen_nor_0.6',
+              'gen_nor_0.8',
+              'gen_nor_1',
+              ]
 
 algo_arr = [
     'SVM',
@@ -599,19 +625,31 @@ data_order_table = {
     'wine_Red': (7, 'wineR'),
     'wine_White': (8, 'wineW'),
     'yeast': (9, 'yeast'),
+    'gen_0.5': (10, 'gen_0.5'),
+    'gen_0.75': (11, 'gen_0.75'),
+    'gen_1': (12, 'gen_1'),
+    'gen_2': (13, 'gen_2'),
+    'gen_5': (14, 'gen_5'),
+    'gen_nor_0.2': (15, 'gen_nor_0.2'),
+    'gen_nor_0.4': (16, 'gen_nor_0.4'),
+    'gen_nor_0.6': (17, 'gen_nor_0.6'),
+    'gen_nor_0.8': (18, 'gen_nor_0.8'),
+    'gen_nor_1': (19, 'gen_nor_1'),
+    'heat': (20, 'heat'),
+    'cool': (21, 'cool'),
 }
 
 
 def prep_table(stat_res_dic, dataset_name, algo_arr, ):
     # preambula
     res_str = ""
-    with open('table_preambula') as f:
+    with open('for-paper/table_preambula') as f:
         for line in f:
             res_str += line
     res_str = res_str.replace('XXX', data_order_table[dataset_name][1])
 
     algo_str = ""
-    with open('table_algo') as f:
+    with open('for-paper/table_algo') as f:
         for line in f:
             algo_str += line
 
@@ -646,7 +684,7 @@ def prep_table(stat_res_dic, dataset_name, algo_arr, ):
         pass
     # add ending
     res_str += '\n'
-    with open('table_ending') as f:
+    with open('for-paper/table_ending') as f:
         for line in f:
             res_str += line
 

@@ -254,6 +254,86 @@ def load_balance():
     return data
 
 
+def load_steel():
+    print('Loading steel')
+    file = 'datasets/steel.csv'
+    df = pd.read_csv(file)
+    target = df['class'].values
+    data = {'target': target, 'data': df[df.columns[:-1]].values,
+            'target_names': df['class'].unique()}
+    return data
+
+
+def load_tae():
+    print('Loading tae')
+    file = 'datasets/tae.csv'
+    df = pd.read_csv(file, header=None)
+    target = df[df.columns[-1]].values
+    data = {'target': target, 'data': df[df.columns[:-1]].values,
+            'target_names': df[df.columns[-1]].unique()}
+    return data
+
+
+def load_cmc():
+    print('Loading cmc')
+    file = 'datasets/cmc.csv'
+    df = pd.read_csv(file, header=None)
+    target = df[df.columns[-1]].values
+    data = {'target': target, 'data': df[df.columns[:-1]].values,
+            'target_names': df[df.columns[-1]].unique()}
+    return data
+
+
+def load_heat():
+    print('Loading heat')
+    file = 'datasets/heat.csv'
+    df = pd.read_csv(file)
+    target = df[df.columns[-1]].values
+    data = {'target': target, 'data': df[df.columns[:-1]].values,
+            'target_names': df[df.columns[-1]].unique()}
+    return data
+
+
+def load_cool():
+    print('Loading cool')
+    file = 'datasets/cool.csv'
+    df = pd.read_csv(file)
+    target = df[df.columns[-1]].values
+    data = {'target': target, 'data': df[df.columns[:-1]].values,
+            'target_names': df[df.columns[-1]].unique()}
+    return data
+
+
+def load_whole():
+    print('Loading whole')
+    file = 'datasets/whole.csv'
+    df = pd.read_csv(file)
+    target = df[df.columns[-1]].values
+    data = {'target': target, 'data': df[df.columns[:-1]].values,
+            'target_names': df[df.columns[-1]].unique()}
+    return data
+
+
+def load_generated(sigma=0.5):
+    print('Loading generated_sigma_{}.csv'.format(sigma))
+    file = 'datasets/generated_sigma_{}.csv'.format(sigma)
+    df = pd.read_csv(file)
+    target = df[df.columns[-1]].values
+    data = {'target': target, 'data': df[df.columns[:-1]].values,
+            'target_names': df[df.columns[-1]].unique()}
+    return data
+
+
+def load_norm_generated(sigma=0.2):
+    print('Loading generated_normal_sigma_{}.csv'.format(sigma))
+    file = 'datasets/generated_normal_sigma_{}.csv'.format(sigma)
+    df = pd.read_csv(file)
+    target = df[df.columns[-1]].values
+    data = {'target': target, 'data': df[df.columns[:-1]].values,
+            'target_names': df[df.columns[-1]].unique()}
+    return data
+
+
 def load_cars():
     print('Loading cars')
     # load cars dataset
@@ -1153,7 +1233,12 @@ def plot_results_vertical(all_results, col, dataset):
     pass
 
 
-datasets_load = {'balance': load_balance, 'cars': load_cars, 'ecoli': load_ecoli, 'glass': load_glass,
-                 'iris': load_iris, 'user': load_user, 'wave': load_wave, 'wine': load_wine,
-                 'wine_Red': load_wine_red, 'wine_White': load_wine_white, 'yeast': load_yeast, 'zoo': load_zoo
+datasets_load = {'balance': load_balance(), 'cars': load_cars(), 'ecoli': load_ecoli(), 'glass': load_glass(),
+                 'iris': load_iris(), 'user': load_user(), 'wave': load_wave(), 'wine': load_wine(),
+                 'wine_Red': load_wine_red(), 'wine_White': load_wine_white(), 'yeast': load_yeast(),
+                 'gen_nor_0.2': load_norm_generated(sigma=0.2),
+                 'gen_nor_0.4': load_norm_generated(sigma=0.4),
+                 'gen_nor_0.6': load_norm_generated(sigma=0.6),
+                 'gen_nor_0.8': load_norm_generated(sigma=0.8),
+                 'gen_nor_1': load_norm_generated(sigma=1),
                  }

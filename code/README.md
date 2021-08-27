@@ -7,6 +7,8 @@
     datasets.
 4. `batch-analysis.py` - main file to launch experiments with
     different datasets and different classifiers.
+5. `data-generation.ipynb` - a notebook generation of 
+    synthetic datasets
 5. `results-analysis.ipynb` - a notebook with visualization of 
     experimental results for a specified dataset.
 6. `results-analysis-calibration.ipynb` - analysis of *calibration*
